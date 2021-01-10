@@ -146,5 +146,17 @@ namespace Game_of_Life
         {
             newToolStripMenuItem_Click(sender, e);
         }
+
+        private void tempToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDlg = new ColorDialog();
+
+            colorDlg.Color = graphicsPanel1.BackColor;
+
+            if (DialogResult.OK == colorDlg.ShowDialog()) //OK refers to affirmative button
+            {
+                graphicsPanel1.BackColor = colorDlg.Color;
+            }
+        }
     }
 }

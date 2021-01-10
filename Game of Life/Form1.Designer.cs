@@ -50,8 +50,8 @@
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.startToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pauseToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelGenerations = new System.Windows.Forms.ToolStripStatusLabel();
@@ -154,28 +154,28 @@
             // 
             this.startToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.StartIcon;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.startToolStripMenuItem.Text = "Start";
             // 
             // nextToolStripMenuItem
             // 
             this.nextToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.NextIcon;
             this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
-            this.nextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nextToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.nextToolStripMenuItem.Text = "Next";
             // 
             // pauseToolStripMenuItem
             // 
             this.pauseToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.PauseIcon;
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             // 
             // stopToolStripMenuItem
             // 
             this.stopToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.StopIcon;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             // 
             // toolStrip1
@@ -238,15 +238,6 @@
             this.startToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.startToolStripButton.Text = "Start";
             // 
-            // nextToolStripButton
-            // 
-            this.nextToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.nextToolStripButton.Image = global::Game_of_Life.Properties.Resources.NextIcon;
-            this.nextToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.nextToolStripButton.Name = "nextToolStripButton";
-            this.nextToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.nextToolStripButton.Text = "Next";
-            // 
             // pauseToolStripButton
             // 
             this.pauseToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -255,6 +246,15 @@
             this.pauseToolStripButton.Name = "pauseToolStripButton";
             this.pauseToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.pauseToolStripButton.Text = "Pause";
+            // 
+            // nextToolStripButton
+            // 
+            this.nextToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.nextToolStripButton.Image = global::Game_of_Life.Properties.Resources.NextIcon;
+            this.nextToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.nextToolStripButton.Name = "nextToolStripButton";
+            this.nextToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.nextToolStripButton.Text = "Next";
             // 
             // toolStripSeparator2
             // 
@@ -294,13 +294,14 @@
             this.panelContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tempToolStripMenuItem});
             this.panelContextMenuStrip.Name = "panelContextMenuStrip";
-            this.panelContextMenuStrip.Size = new System.Drawing.Size(104, 26);
+            this.panelContextMenuStrip.Size = new System.Drawing.Size(181, 48);
             // 
             // tempToolStripMenuItem
             // 
             this.tempToolStripMenuItem.Name = "tempToolStripMenuItem";
-            this.tempToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.tempToolStripMenuItem.Text = "Temp";
+            this.tempToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tempToolStripMenuItem.Text = "Background Color";
+            this.tempToolStripMenuItem.Click += new System.EventHandler(this.tempToolStripMenuItem_Click);
             // 
             // Form1
             // 
