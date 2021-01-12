@@ -196,5 +196,16 @@ namespace Game_of_Life
 
             graphicsPanel1.Invalidate();
         }
+
+        // Start the game using run menu item
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = true;
+        }
+
+        private void startToolStripButton_Click(object sender, EventArgs e)
+        {
+            startToolStripMenuItem_Click(sender, e);
+        }
     }
 }
