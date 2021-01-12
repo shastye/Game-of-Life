@@ -435,5 +435,23 @@ namespace Game_of_Life
 
             Properties.Settings.Default.Save();
         }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Reset();
+
+            graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
+            gridColor = Properties.Settings.Default.GraphicsPanel1_Gridcolor;
+            cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
+        }
+
+        private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Reload();
+
+            graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
+            gridColor = Properties.Settings.Default.GraphicsPanel1_Gridcolor;
+            cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
+        }
     }
 }
