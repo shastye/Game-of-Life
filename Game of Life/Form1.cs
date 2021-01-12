@@ -27,8 +27,8 @@ namespace Game_of_Life
         // Drawing colors
         Color gridColor = Color.Black;
         Color cellColor = Color.Gray;
-        Brush livingNumberColor = Brushes.White;
-        Brush deadNumberColor = Brushes.Black;
+        Color livingNumberColor = Color.White;
+        Color deadNumberColor = Color.Black;
 
         // The Timer class
         Timer timer = new Timer();
@@ -53,6 +53,8 @@ namespace Game_of_Life
             graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
             gridColor = Properties.Settings.Default.GraphicsPanel1_Gridcolor;
             cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
+            livingNumberColor = Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor;
+            deadNumberColor = Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor;
         }
 
         // Calculate the next generation of cells
@@ -365,11 +367,11 @@ namespace Game_of_Life
                     Brush numbers;
                     if (universe[x, y] == true)
                     {
-                        numbers = livingNumberColor;
+                        numbers = new SolidBrush(livingNumberColor);
                     }
                     else
                     {
-                        numbers = deadNumberColor;
+                        numbers = new SolidBrush(deadNumberColor);
                     }
 
                     if (CountNeighbors(x, y) > 0 || universe[x, y] == true)
@@ -494,6 +496,8 @@ namespace Game_of_Life
             Properties.Settings.Default.GraphicsPanel1_Backcolor = graphicsPanel1.BackColor;
             Properties.Settings.Default.GraphicsPanel1_Gridcolor = gridColor;
             Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor = cellColor;
+            Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor = livingNumberColor;
+            Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor = deadNumberColor;
 
             Properties.Settings.Default.Save();
         }
@@ -516,6 +520,32 @@ namespace Game_of_Life
             graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
             gridColor = Properties.Settings.Default.GraphicsPanel1_Gridcolor;
             cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
+        }
+
+        private void selectedBoxNumbersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = livingNumberColor;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                livingNumberColor = dlg.Color;
+            }
+
+            graphicsPanel1.Invalidate();
+        }
+
+        private void unselectedBoxNumbersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = deadNumberColor;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                deadNumberColor = dlg.Color;
+            }
+
+            graphicsPanel1.Invalidate();
         }
     }
 }

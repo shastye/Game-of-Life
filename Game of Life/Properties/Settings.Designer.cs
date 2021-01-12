@@ -58,5 +58,29 @@ namespace Game_of_Life.Properties {
                 this["GraphicsPanel1_SelectedBoxColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("White")]
+        public global::System.Drawing.Color GraphicsPanel1_SelectedCellNumberColor {
+            get {
+                return ((global::System.Drawing.Color)(this["GraphicsPanel1_SelectedCellNumberColor"]));
+            }
+            set {
+                this["GraphicsPanel1_SelectedCellNumberColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color GraphicsPanel1_UnselectedCellNumberColor {
+            get {
+                return ((global::System.Drawing.Color)(this["GraphicsPanel1_UnselectedCellNumberColor"]));
+            }
+            set {
+                this["GraphicsPanel1_UnselectedCellNumberColor"] = value;
+            }
+        }
     }
 }
