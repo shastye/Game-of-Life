@@ -147,16 +147,41 @@ namespace Game_of_Life
             newToolStripMenuItem_Click(sender, e);
         }
 
-        private void tempToolStripMenuItem_Click(object sender, EventArgs e)
+        private void backgroundToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ColorDialog colorDlg = new ColorDialog();
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = graphicsPanel1.BackColor;
 
-            colorDlg.Color = graphicsPanel1.BackColor;
-
-            if (DialogResult.OK == colorDlg.ShowDialog()) //OK refers to affirmative button
+            if (DialogResult.OK == dlg.ShowDialog())
             {
-                graphicsPanel1.BackColor = colorDlg.Color;
+                graphicsPanel1.BackColor = dlg.Color;
             }
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = gridColor;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                gridColor = dlg.Color;
+            }
+
+            graphicsPanel1.Invalidate();
+        }
+
+        private void selectedBoxToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = cellColor;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                cellColor = dlg.Color;
+            }
+
+            graphicsPanel1.Invalidate();
         }
     }
 }
