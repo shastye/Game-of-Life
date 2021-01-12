@@ -47,18 +47,206 @@ namespace Game_of_Life
         // Calculate the next generation of cells
         private void NextGeneration()
         {
-            //PUT MOST OF YOUR CODE HERE
-                /*
-                 * "Start" changes the timer to true then runs through the Timer_Tick 
-                 * "Next" just calls NextGeneration() directly
-                 * "Pause" or "Stop" changes timer back to false
-                 */
+            // Count neighbors
+            CountNeighbors(0, 0);
 
             // Increment generation count
             generations++;
 
             // Update status strip generations
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
+        }
+
+        // Method for counting the neighbors
+        // Treating as toroidal (top left corner neighbors bottom right corner)
+        private int CountNeighbors(int xPos, int yPos)
+        {
+
+            // The number of living neighbors
+            int neighbors = 0;
+
+
+
+            // Fit xPos and yPos into discrete array
+            if (universe.GetLength(0) < xPos)
+            {
+                xPos -= universe.GetLength(0);
+            }
+            else if (xPos < 0)
+            {
+                xPos += universe.GetLength(0);
+            }
+
+            if (universe.GetLength(1) < yPos)
+            {
+                yPos -= universe.GetLength(1);
+            }
+            else if (yPos < 0)
+            {
+                yPos += universe.GetLength(1);
+            }
+
+
+
+            // Temp x and y (wasn't sure if changing xPos and yPos directly would affect later code)
+            int xTemp = xPos;
+            int yTemp = yPos;
+
+            // Wrap around
+            void xToroidal_l(out int x) //left is an edge
+            {
+                if (xTemp - 1 < 0)
+                {
+                    xTemp += universe.GetLength(0);
+                }
+
+                x = xTemp;
+            }
+            void xToroidal_r(out int x) //right is an edge
+            {
+                if (xTemp + 1 >= universe.GetLength(0))
+                {
+                    xTemp -= universe.GetLength(0);
+                }
+
+                x = xTemp;
+            }
+            void yToroidal_t(out int y) //top is an edge
+            {
+                if (yTemp - 1 < 0)
+                {
+                    yTemp += universe.GetLength(1);
+                }
+
+                y = yTemp;
+            }
+            void yToroidal_b(out int y) //bottom is an edge
+            {
+                if (yTemp + 1 >= universe.GetLength(1))
+                {
+                    yTemp -= universe.GetLength(1);
+                }
+
+                y = yTemp;
+            }
+
+            // Methods for checking each surrounding neighbor
+            void UpperLeft()
+            {
+                xToroidal_l(out xTemp);
+                yToroidal_t(out yTemp);
+
+                if (universe[xTemp - 1, yTemp - 1] == true) //top left corner
+                {
+                    neighbors++;
+                }
+            }
+            void Left()
+            {
+                xToroidal_l(out xTemp);
+
+                if (universe[xTemp - 1, yTemp] == true) //directly to left
+                {
+                    neighbors++;
+                }
+            }
+            void LowerLeft()
+            {
+                xToroidal_l(out xTemp);
+                yToroidal_b(out yTemp);
+
+                if (universe[xTemp - 1, yTemp + 1] == true) //bottom left corner
+                {
+                    neighbors++;
+                }
+            }
+            void Above()
+            {
+                yToroidal_t(out yTemp);
+
+                if (universe[xTemp, yTemp - 1] == true) //directly above
+                {
+                    neighbors++;
+                }
+            }
+            void Below()
+            {
+                yToroidal_b(out yTemp);
+
+                if (universe[xTemp, yTemp + 1] == true) //directly below
+                {
+                    neighbors++;
+                }
+            }
+            void UpperRight()
+            {
+                xToroidal_r(out xTemp);
+                yToroidal_t(out yTemp);
+
+                if (universe[xTemp + 1, yTemp - 1] == true) //upper right corner
+                {
+                    neighbors++;
+                }
+            }
+            void Right()
+            {
+                xToroidal_r(out xTemp);
+
+                if (universe[xTemp + 1, yTemp] == true) //directly to right
+                {
+                    neighbors++;
+                }
+            }
+            void LowerRight()
+            {
+                xToroidal_r(out xTemp);
+                yToroidal_b(out yTemp);
+
+                if (universe[xTemp + 1, yTemp + 1] == true) //bottom right corner
+                {
+                    neighbors++;
+                }
+            }
+
+
+
+            // Actually check each neighbor
+            xTemp = xPos;
+            yTemp = yPos;
+            UpperLeft();
+
+            xTemp = xPos;
+            yTemp = yPos;
+            Left();
+
+            xTemp = xPos;
+            yTemp = yPos;
+            LowerLeft();
+
+            xTemp = xPos;
+            yTemp = yPos;
+            Above();
+
+            xTemp = xPos;
+            yTemp = yPos;
+            Below();
+
+            xTemp = xPos;
+            yTemp = yPos;
+            UpperRight();
+
+            xTemp = xPos;
+            yTemp = yPos;
+            Right();
+
+            xTemp = xPos;
+            yTemp = yPos;
+            LowerRight();
+
+
+
+
+            return neighbors;
         }
 
         // The event called by the timer every Interval milliseconds.
