@@ -12,8 +12,13 @@ namespace Game_of_Life
 {
     public partial class Form1 : Form
     {
-        // The universe array
-        bool[,] universe = new bool[5, 5];
+        // The array sizes
+        const int x = 5;
+        const int y = 5;
+
+        // The universe and scratch pad arrays
+        bool[,] universe = new bool[x, y];
+        bool[,] scratchPad = new bool[x, y];
 
         // Drawing colors
         Color gridColor = Color.Black;
@@ -25,6 +30,7 @@ namespace Game_of_Life
         // Generation count
         int generations = 0;
 
+        // The constructor
         public Form1()
         {
             InitializeComponent();
@@ -61,6 +67,7 @@ namespace Game_of_Life
             NextGeneration();
         }
 
+        // Drawing the game
         private void graphicsPanel1_Paint(object sender, PaintEventArgs e)
         {
             // Calculate the width and height of each cell in pixels
@@ -104,6 +111,7 @@ namespace Game_of_Life
             cellBrush.Dispose();
         }
 
+        // Clicking a cell
         private void graphicsPanel1_MouseClick(object sender, MouseEventArgs e)
         {
             // If the left mouse button was clicked
@@ -127,6 +135,7 @@ namespace Game_of_Life
             }
         }
 
+        // Clearing the screen using new file menu option
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             for (int y = 0; y < universe.GetLength(1); y++)
@@ -142,11 +151,13 @@ namespace Game_of_Life
             }
         }
 
+        // Clearing the screen using the new button
         private void newToolStripButton_Click(object sender, EventArgs e)
         {
             newToolStripMenuItem_Click(sender, e);
         }
 
+        // Changing the background color of the game
         private void backgroundToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -158,7 +169,8 @@ namespace Game_of_Life
             }
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        // Changing the grid color of the game
+        private void gridToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
             dlg.Color = gridColor;
@@ -171,6 +183,7 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Changing the color of any boxes that are True
         private void selectedBoxToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
