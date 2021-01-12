@@ -13,12 +13,13 @@ namespace Game_of_Life
     public partial class Form1 : Form
     {
         // The array sizes
-        const int x = 5;
-        const int y = 5;
+        const int _X = 5;
+        const int _Y = 5;
 
         // The universe and scratch pad arrays
-        bool[,] universe = new bool[x, y];
-        bool[,] scratchPad = new bool[x, y];
+        bool[,] universe = new bool[_X, _Y];
+        bool[,] scratchPad = new bool[_X, _Y];
+        int[,] neighbors = new int[_X, _Y];
 
         // Drawing colors
         Color gridColor = Color.Black;
@@ -52,8 +53,10 @@ namespace Game_of_Life
         // Calculate the next generation of cells
         private void NextGeneration()
         {
-
-
+            //Apply the rules to the universe
+            scratchPad = ApplyRules();
+            universe = scratchPad;
+            graphicsPanel1.Invalidate();
 
             // Increment generation count
             generations++;
@@ -251,8 +254,59 @@ namespace Game_of_Life
 
 
 
-
             return neighbors;
+        }
+
+        // Applying the rules to the scratchpad
+        private bool[,] ApplyRules()
+        {
+            scratchPad = universe;
+
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                // Iterate through the universe in the x, left to right
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    neighbors[x, y] = CountNeighbors(x, y);
+                }
+            }
+
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                // Iterate through the universe in the x, left to right
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    // Any living cell with less than 2 living neighbors dies in the next generation
+                    if (neighbors[x, y] < 2 && universe[x, y] == true)
+                    {
+                        scratchPad[x, y] = false;
+                    }
+
+                    // Any living cell with more than 3 living neighbors will die in the next generation
+                    else if (neighbors[x, y] > 3 && universe[x, y] == true)
+                    {
+                        scratchPad[x, y] = false;
+                    }
+                    
+                    // Any living cell with 2 or 3 living neighbors lives on in the next generation
+                    else if (neighbors[x, y] == 2 && universe[x, y] == true)
+                    {
+                        scratchPad[x, y] = true;
+                    }
+                    else if (neighbors[x, y] == 3 && universe[x, y] == true)
+                    {
+                        scratchPad[x, y] = true;
+                    }
+
+                    // Any dead cell with exactly 3 living neighbors will be born in the next generation
+                    else if (neighbors[x, y] == 3 && universe[x, y] == false)
+                    {
+                        scratchPad[x, y] = true;
+                    }
+                }
+            }
+
+            return scratchPad;
         }
 
         // The event called by the timer every Interval milliseconds.
@@ -305,8 +359,6 @@ namespace Game_of_Life
                     stringFormat.Alignment = StringAlignment.Center;
                     stringFormat.LineAlignment = StringAlignment.Center;
 
-                    int neighbors = CountNeighbors(x, y);
-
                     Brush numbers;
                     if (universe[x, y] == true)
                     {
@@ -317,9 +369,9 @@ namespace Game_of_Life
                         numbers = Brushes.Black;
                     }
 
-                    if (neighbors > 0 || universe[x, y] == true)
+                    if (CountNeighbors(x, y) > 0 || universe[x, y] == true)
                     {
-                        e.Graphics.DrawString(neighbors.ToString(), font, numbers, cellRect, stringFormat);
+                        e.Graphics.DrawString(CountNeighbors(x, y).ToString(), font, numbers, cellRect, stringFormat);
                     }
                 }
             }
@@ -363,10 +415,13 @@ namespace Game_of_Life
                 {
                     universe[x, y] = false;
                 }
-
-                // Tell Windows you need to repaint
-                graphicsPanel1.Invalidate();
             }
+
+            // Set generation count back to 0
+            generations = 0;
+
+            // Tell Windows you need to repaint
+            graphicsPanel1.Invalidate();
         }
 
         // Changing the background color of the game
