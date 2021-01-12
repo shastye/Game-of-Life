@@ -427,6 +427,7 @@ namespace Game_of_Life
             NextGeneration();
         }
 
+        // Saving the Settings
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Properties.Settings.Default.GraphicsPanel1_Backcolor = graphicsPanel1.BackColor;
@@ -436,6 +437,7 @@ namespace Game_of_Life
             Properties.Settings.Default.Save();
         }
 
+        // Resetting the Settings
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Reset();
@@ -445,6 +447,7 @@ namespace Game_of_Life
             cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
         }
 
+        // Reloading the last saved settings
         private void reloadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.Reload();
