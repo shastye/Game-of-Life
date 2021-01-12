@@ -47,8 +47,8 @@ namespace Game_of_Life
         // Calculate the next generation of cells
         private void NextGeneration()
         {
-            // Count neighbors
-            CountNeighbors(0, 0);
+
+
 
             // Increment generation count
             generations++;
@@ -59,6 +59,7 @@ namespace Game_of_Life
 
         // Method for counting the neighbors
         // Treating as toroidal (top left corner neighbors bottom right corner)
+        // I totally didn't even see the coding tutorial for this, so it looks a lot different than that
         private int CountNeighbors(int xPos, int yPos)
         {
 
@@ -291,6 +292,27 @@ namespace Game_of_Life
 
                     // Outline the cell with a pen
                     e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+
+                    //Writing out neighbors for all cells
+                    Font font = new Font("Arial", 10f);
+
+                    StringFormat stringFormat = new StringFormat();
+                    stringFormat.Alignment = StringAlignment.Center;
+                    stringFormat.LineAlignment = StringAlignment.Center;
+
+                    int neighbors = CountNeighbors(x, y);
+
+                    Brush numbers;
+                    if (universe[x, y] == true)
+                    {
+                        numbers = Brushes.White;
+                    }
+                    else
+                    {
+                        numbers = Brushes.Black;
+                    }
+
+                    e.Graphics.DrawString(neighbors.ToString(), font, numbers, cellRect, stringFormat);
                 }
             }
 
