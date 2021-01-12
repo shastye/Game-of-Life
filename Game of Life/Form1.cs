@@ -16,14 +16,19 @@ namespace Game_of_Life
         const int _X = 5;
         const int _Y = 5;
 
-        // The universe and scratch pad arrays
+        // The universe, neighbors, and scratch pad arrays
         bool[,] universe = new bool[_X, _Y];
         bool[,] scratchPad = new bool[_X, _Y];
         int[,] neighbors = new int[_X, _Y];
 
+        //Writing out neighbors for all cells
+        Font font = new Font("Arial", 10f);
+
         // Drawing colors
         Color gridColor = Color.Black;
         Color cellColor = Color.Gray;
+        Brush livingNumberColor = Brushes.White;
+        Brush deadNumberColor = Brushes.Black;
 
         // The Timer class
         Timer timer = new Timer();
@@ -352,9 +357,7 @@ namespace Game_of_Life
                     // Outline the cell with a pen
                     e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
 
-                    //Writing out neighbors for all cells
-                    Font font = new Font("Arial", 10f);
-
+                    // Draw neighbors in grid
                     StringFormat stringFormat = new StringFormat();
                     stringFormat.Alignment = StringAlignment.Center;
                     stringFormat.LineAlignment = StringAlignment.Center;
@@ -362,11 +365,11 @@ namespace Game_of_Life
                     Brush numbers;
                     if (universe[x, y] == true)
                     {
-                        numbers = Brushes.White;
+                        numbers = livingNumberColor;
                     }
                     else
                     {
-                        numbers = Brushes.Black;
+                        numbers = deadNumberColor;
                     }
 
                     if (CountNeighbors(x, y) > 0 || universe[x, y] == true)
@@ -419,6 +422,9 @@ namespace Game_of_Life
 
             // Set generation count back to 0
             generations = 0;
+            
+            // Update status strip generations
+            toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
 
             // Tell Windows you need to repaint
             graphicsPanel1.Invalidate();
