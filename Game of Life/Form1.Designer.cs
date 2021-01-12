@@ -167,6 +167,7 @@
             this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
             this.nextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nextToolStripMenuItem.Text = "Next";
+            this.nextToolStripMenuItem.Click += new System.EventHandler(this.nextToolStripMenuItem_Click);
             // 
             // pauseToolStripMenuItem
             // 
@@ -262,6 +263,7 @@
             this.nextToolStripButton.Name = "nextToolStripButton";
             this.nextToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.nextToolStripButton.Text = "Next";
+            this.nextToolStripButton.Click += new System.EventHandler(this.nextToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 

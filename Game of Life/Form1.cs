@@ -51,7 +51,7 @@ namespace Game_of_Life
                 /*
                  * "Start" changes the timer to true then runs through the Timer_Tick 
                  * "Next" just calls NextGeneration() directly
-                 * "Pause" or "Stop" changes timer back to true
+                 * "Pause" or "Stop" changes timer back to false
                  */
 
             // Increment generation count
@@ -151,12 +151,6 @@ namespace Game_of_Life
             }
         }
 
-        // Clearing the screen using the new button
-        private void newToolStripButton_Click(object sender, EventArgs e)
-        {
-            newToolStripMenuItem_Click(sender, e);
-        }
-
         // Changing the background color of the game
         private void backgroundToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -203,22 +197,16 @@ namespace Game_of_Life
             timer.Enabled = true;
         }
 
-        // Start the game using the start button
-        private void startToolStripButton_Click(object sender, EventArgs e)
-        {
-            startToolStripMenuItem_Click(sender, e);
-        }
-
         // Pause the game using the run menu item
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
         }
 
-        // Pause the game using the pause button
-        private void pauseToolStripButton_Click(object sender, EventArgs e)
+        // Advance to the next generation
+        private void nextToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            pauseToolStripMenuItem_Click(sender, e);
+            NextGeneration();
         }
     }
 }
