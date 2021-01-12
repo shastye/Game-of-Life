@@ -41,7 +41,12 @@ namespace Game_of_Life
             // Setup the timer
             timer.Interval = 100; // milliseconds (no lower than 20 to see changes)
             timer.Tick += Timer_Tick;
-            timer.Enabled = false; // start timer running
+            timer.Enabled = false; // start timer as not running
+
+            // Read settings
+            graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
+            gridColor = Properties.Settings.Default.GraphicsPanel1_Gridcolor;
+            cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
         }
 
         // Calculate the next generation of cells
@@ -420,6 +425,15 @@ namespace Game_of_Life
         private void nextToolStripMenuItem_Click(object sender, EventArgs e)
         {
             NextGeneration();
+        }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Properties.Settings.Default.GraphicsPanel1_Backcolor = graphicsPanel1.BackColor;
+            Properties.Settings.Default.GraphicsPanel1_Gridcolor = gridColor;
+            Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor = cellColor;
+
+            Properties.Settings.Default.Save();
         }
     }
 }

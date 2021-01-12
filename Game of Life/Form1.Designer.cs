@@ -151,13 +151,13 @@
             this.stopToolStripMenuItem});
             this.runToolStripMenuItem.Name = "runToolStripMenuItem";
             this.runToolStripMenuItem.Size = new System.Drawing.Size(40, 20);
-            this.runToolStripMenuItem.Text = "Run";
+            this.runToolStripMenuItem.Text = "&Run";
             // 
             // startToolStripMenuItem
             // 
             this.startToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.StartIcon;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -165,7 +165,7 @@
             // 
             this.nextToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.NextIcon;
             this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
-            this.nextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.nextToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.nextToolStripMenuItem.Text = "Next";
             this.nextToolStripMenuItem.Click += new System.EventHandler(this.nextToolStripMenuItem_Click);
             // 
@@ -173,7 +173,7 @@
             // 
             this.pauseToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.PauseIcon;
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
@@ -181,7 +181,7 @@
             // 
             this.stopToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.StopIcon;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(105, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             // 
             // toolStrip1
@@ -291,7 +291,7 @@
             this.panelContextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.colorToolStripMenuItem});
             this.panelContextMenuStrip.Name = "panelContextMenuStrip";
-            this.panelContextMenuStrip.Size = new System.Drawing.Size(104, 26);
+            this.panelContextMenuStrip.Size = new System.Drawing.Size(181, 48);
             // 
             // colorToolStripMenuItem
             // 
@@ -300,8 +300,8 @@
             this.gridToolStripMenuItem,
             this.selectedBoxToolStripMenuItem});
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.colorToolStripMenuItem.Text = "Color";
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.colorToolStripMenuItem.Text = "&Color";
             // 
             // backgroundToolStripMenuItem
             // 
@@ -348,6 +348,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "My App";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
