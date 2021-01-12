@@ -312,7 +312,10 @@ namespace Game_of_Life
                         numbers = Brushes.Black;
                     }
 
-                    e.Graphics.DrawString(neighbors.ToString(), font, numbers, cellRect, stringFormat);
+                    if (neighbors > 0 || universe[x, y] == true)
+                    {
+                        e.Graphics.DrawString(neighbors.ToString(), font, numbers, cellRect, stringFormat);
+                    }
                 }
             }
 
