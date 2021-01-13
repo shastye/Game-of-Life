@@ -675,11 +675,14 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Toggle neighbor count in view
         private void toggleNeighborCountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             neighborDisplay = !neighborDisplay;
 
             graphicsPanel1.Invalidate();
         }
+
+
     }
 }
