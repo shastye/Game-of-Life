@@ -30,6 +30,7 @@ namespace Game_of_Life
         bool gridDisplay = true;
         bool neighborDisplay = true;
         bool hudDisplay = true;
+        bool finite = false;
 
         // Writing out neighbors for all cells
         Font font = new Font("Arial", 10f);
@@ -377,9 +378,27 @@ namespace Game_of_Life
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
 
-            // Update living cells count on screen
+            // Update living cells count on status strip
             CountLivingCells();
             livingCellsToolStripStatusLabel.Text = "Living Cells = " + livingCells.ToString();
+
+            // Update the HUD
+            if (hudDisplay)
+            {
+                hudCellCountStatus.Text = "Cell Count = " + livingCells.ToString() + "  -";
+                hudGenerationStatus.Text = "Current Generation = " + generations.ToString() + "  -";
+                if (finite)
+                {
+                    hudCellCountStatus.Text = "Boundary Style = Finite  -";
+                }
+                else
+                {
+                    hudCellCountStatus.Text = "Boundary Style = Toroidal  -";
+                }
+                hudUniverseSizeStatus.Text =
+                    "Universe Size: {Height = " + universe.GetLength(1).ToString() +
+                    "; Width = " + universe.GetLength(0).ToString() + "}";
+            }
 
             // Iterate through the universe in the y, top to bottom
             for (int y = 0; y < universe.GetLength(1); y++)
