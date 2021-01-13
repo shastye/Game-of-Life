@@ -22,7 +22,6 @@ namespace Game_of_Life
         int[,] neighbors = new int[_X, _Y];
 
         // Variables for randomizing the seed and the grid
-        Random randSeed = new Random();
         int seed = 2019;
         Random randGrid;        
 

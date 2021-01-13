@@ -32,6 +32,7 @@
             this.OKButton = new System.Windows.Forms.Button();
             this.seedLabel = new System.Windows.Forms.Label();
             this.seedUpDown = new System.Windows.Forms.NumericUpDown();
+            this.randSeedButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).BeginInit();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             // seedLabel
             // 
             this.seedLabel.AutoSize = true;
-            this.seedLabel.Location = new System.Drawing.Point(103, 47);
+            this.seedLabel.Location = new System.Drawing.Point(90, 45);
             this.seedLabel.Name = "seedLabel";
             this.seedLabel.Size = new System.Drawing.Size(32, 13);
             this.seedLabel.TabIndex = 2;
@@ -66,7 +67,7 @@
             // 
             // seedUpDown
             // 
-            this.seedUpDown.Location = new System.Drawing.Point(154, 43);
+            this.seedUpDown.Location = new System.Drawing.Point(128, 41);
             this.seedUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -81,12 +82,23 @@
             0,
             0});
             // 
+            // randSeedButton
+            // 
+            this.randSeedButton.Location = new System.Drawing.Point(254, 40);
+            this.randSeedButton.Name = "randSeedButton";
+            this.randSeedButton.Size = new System.Drawing.Size(75, 23);
+            this.randSeedButton.TabIndex = 4;
+            this.randSeedButton.Text = "Randomize";
+            this.randSeedButton.UseVisualStyleBackColor = true;
+            this.randSeedButton.Click += new System.EventHandler(this.randSeedButton_Click);
+            // 
             // GameOptionsForm
             // 
             this.AcceptButton = this.OKButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 272);
+            this.Controls.Add(this.randSeedButton);
             this.Controls.Add(this.seedUpDown);
             this.Controls.Add(this.seedLabel);
             this.Controls.Add(this.OKButton);
@@ -106,5 +118,6 @@
         private System.Windows.Forms.Button OKButton;
         private System.Windows.Forms.Label seedLabel;
         private System.Windows.Forms.NumericUpDown seedUpDown;
+        private System.Windows.Forms.Button randSeedButton;
     }
 }

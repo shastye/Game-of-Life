@@ -28,5 +28,11 @@ namespace Game_of_Life
                 seedUpDown.Value = (decimal)value;
             }
         }
+
+        private void randSeedButton_Click(object sender, EventArgs e)
+        {
+            Random randSeed = new Random();
+            this.Seed = randSeed.Next((int)seedUpDown.Maximum);
+        }
     }
 }
