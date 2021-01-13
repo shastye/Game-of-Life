@@ -61,6 +61,7 @@ namespace Game_of_Life
             cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
             livingNumberColor = Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor;
             deadNumberColor = Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor;
+            timer.Interval = Properties.Settings.Default.Form1_TimerInterval;
         }
 
         // Count living cells in the window
@@ -546,6 +547,7 @@ namespace Game_of_Life
             Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor = cellColor;
             Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor = livingNumberColor;
             Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor = deadNumberColor;
+            Properties.Settings.Default.Form1_TimerInterval = timer.Interval;
 
             Properties.Settings.Default.Save();
         }

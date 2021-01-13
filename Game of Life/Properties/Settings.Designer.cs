@@ -82,5 +82,17 @@ namespace Game_of_Life.Properties {
                 this["GraphicsPanel1_UnselectedCellNumberColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int Form1_TimerInterval {
+            get {
+                return ((int)(this["Form1_TimerInterval"]));
+            }
+            set {
+                this["Form1_TimerInterval"] = value;
+            }
+        }
     }
 }
