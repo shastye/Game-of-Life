@@ -683,6 +683,21 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Toggle HUD in view
+        private void toggleHUDToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            hudDisplay = !hudDisplay;
 
+            if (hudDisplay)
+            {
+                hudStatusStrip.Visible = true;
+            }
+            else
+            {
+                hudStatusStrip.Visible = false;
+            }
+
+            graphicsPanel1.Invalidate();
+        }
     }
 }

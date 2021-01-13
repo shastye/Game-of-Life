@@ -82,11 +82,17 @@
             this.selectedBoxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectedBoxNumbersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.unselectedBoxNumbersToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.hudStatusStrip = new System.Windows.Forms.StatusStrip();
+            this.hudGenerationStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.hudCellCountStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.hudBoundaryStyleStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.hudUniverseSizeStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.graphicsPanel1 = new Game_of_Life.GraphicsPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panelContextMenuStrip.SuspendLayout();
+            this.hudStatusStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -256,6 +262,7 @@
             this.toggleHUDToolStripMenuItem.Name = "toggleHUDToolStripMenuItem";
             this.toggleHUDToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
             this.toggleHUDToolStripMenuItem.Text = "Toggle HUD";
+            this.toggleHUDToolStripMenuItem.Click += new System.EventHandler(this.toggleHUDToolStripMenuItem_Click);
             // 
             // settingsToolStripMenuItem
             // 
@@ -520,14 +527,53 @@
             this.unselectedBoxNumbersToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
             this.unselectedBoxNumbersToolStripMenuItem1.Text = "Unselected Box Numbers";
             // 
+            // hudStatusStrip
+            // 
+            this.hudStatusStrip.Dock = System.Windows.Forms.DockStyle.Top;
+            this.hudStatusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.hudGenerationStatus,
+            this.hudCellCountStatus,
+            this.hudBoundaryStyleStatus,
+            this.hudUniverseSizeStatus});
+            this.hudStatusStrip.Location = new System.Drawing.Point(0, 49);
+            this.hudStatusStrip.Name = "hudStatusStrip";
+            this.hudStatusStrip.Size = new System.Drawing.Size(617, 22);
+            this.hudStatusStrip.SizingGrip = false;
+            this.hudStatusStrip.TabIndex = 4;
+            this.hudStatusStrip.Text = "hudStatusStrip";
+            // 
+            // hudGenerationStatus
+            // 
+            this.hudGenerationStatus.Name = "hudGenerationStatus";
+            this.hudGenerationStatus.Size = new System.Drawing.Size(128, 17);
+            this.hudGenerationStatus.Text = "Current Generation = 0";
+            // 
+            // hudCellCountStatus
+            // 
+            this.hudCellCountStatus.Name = "hudCellCountStatus";
+            this.hudCellCountStatus.Size = new System.Drawing.Size(83, 17);
+            this.hudCellCountStatus.Text = "Cell Count = 0";
+            // 
+            // hudBoundaryStyleStatus
+            // 
+            this.hudBoundaryStyleStatus.Name = "hudBoundaryStyleStatus";
+            this.hudBoundaryStyleStatus.Size = new System.Drawing.Size(142, 17);
+            this.hudBoundaryStyleStatus.Text = "Boundary Style = Toroidal";
+            // 
+            // hudUniverseSizeStatus
+            // 
+            this.hudUniverseSizeStatus.Name = "hudUniverseSizeStatus";
+            this.hudUniverseSizeStatus.Size = new System.Drawing.Size(211, 17);
+            this.hudUniverseSizeStatus.Text = "Universe Size = {Height = 5; Width = 5}";
+            // 
             // graphicsPanel1
             // 
             this.graphicsPanel1.BackColor = System.Drawing.SystemColors.Window;
             this.graphicsPanel1.ContextMenuStrip = this.panelContextMenuStrip;
             this.graphicsPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.graphicsPanel1.Location = new System.Drawing.Point(0, 49);
+            this.graphicsPanel1.Location = new System.Drawing.Point(0, 71);
             this.graphicsPanel1.Name = "graphicsPanel1";
-            this.graphicsPanel1.Size = new System.Drawing.Size(617, 305);
+            this.graphicsPanel1.Size = new System.Drawing.Size(617, 283);
             this.graphicsPanel1.TabIndex = 3;
             this.graphicsPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.graphicsPanel1_Paint);
             this.graphicsPanel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.graphicsPanel1_MouseClick);
@@ -538,6 +584,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(617, 376);
             this.Controls.Add(this.graphicsPanel1);
+            this.Controls.Add(this.hudStatusStrip);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -552,6 +599,8 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.panelContextMenuStrip.ResumeLayout(false);
+            this.hudStatusStrip.ResumeLayout(false);
+            this.hudStatusStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -562,7 +611,6 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private GraphicsPanel graphicsPanel1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
@@ -612,6 +660,12 @@
         private System.Windows.Forms.ToolStripMenuItem toggleGridToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toggleNeighborCountToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toggleHUDToolStripMenuItem;
+        private System.Windows.Forms.StatusStrip hudStatusStrip;
+        private System.Windows.Forms.ToolStripStatusLabel hudGenerationStatus;
+        private System.Windows.Forms.ToolStripStatusLabel hudCellCountStatus;
+        private System.Windows.Forms.ToolStripStatusLabel hudBoundaryStyleStatus;
+        private System.Windows.Forms.ToolStripStatusLabel hudUniverseSizeStatus;
+        private GraphicsPanel graphicsPanel1;
     }
 }
 
