@@ -38,8 +38,9 @@ namespace Game_of_Life
         // The Timer class
         Timer timer = new Timer();
 
-        // Generation count
+        // Generation and living cell counts
         int generations = 0;
+        int livingCells = 0;
 
         // The constructor
         public Form1()
@@ -62,6 +63,23 @@ namespace Game_of_Life
             deadNumberColor = Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor;
         }
 
+        // Count living cells in the window
+        private void CountLivingCells()
+        {
+            livingCells = 0;
+
+            for (int x = 0; x < _X; x++)
+            {
+                for (int y = 0; y < _X; y++)
+                {
+                    if (universe[x, y] == true)
+                    {
+                        livingCells++;
+                    }
+                }
+            }
+        }
+
         // Calculate the next generation of cells
         private void NextGeneration()
         {
@@ -73,24 +91,12 @@ namespace Game_of_Life
             // Increment generation count
             generations++;
 
-            // Update status strip generations
-            toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
+            // Update status strip
+            generationsToolStripStatusLabel.Text = "Generations = " + generations.ToString();
 
             //Stop the timer if all cells are dead
-            int totalLiving = 0;
-
-            for (int x = 0; x < _X; x++)
-            {
-                for (int y = 0; y < _X; y++)
-                {
-                    if (universe[x,y] == true)
-                    {
-                        totalLiving++;
-                    }
-                }
-            }
-
-            if (totalLiving == 0 && timer.Enabled == true)
+            CountLivingCells();
+            if (livingCells == 0 && timer.Enabled == true)
             {
                 timer.Enabled = false;
             }
@@ -365,6 +371,10 @@ namespace Game_of_Life
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
 
+            // Update living cells count on screen
+            CountLivingCells();
+            livingCellsToolStripStatusLabel.Text = "Living Cells = " + livingCells.ToString();
+
             // Iterate through the universe in the y, top to bottom
             for (int y = 0; y < universe.GetLength(1); y++)
             {
@@ -450,11 +460,13 @@ namespace Game_of_Life
                 }
             }
 
-            // Set generation count back to 0
+            // Set counts back to 0
             generations = 0;
+            livingCells = 0;
             
-            // Update status strip generations
-            toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
+            // Update status strip 
+            generationsToolStripStatusLabel.Text = "Generations = " + generations.ToString();
+            livingCellsToolStripStatusLabel.Text = "Living Cells = " + livingCells.ToString();
 
             // Tell Windows you need to repaint
             graphicsPanel1.Invalidate();
