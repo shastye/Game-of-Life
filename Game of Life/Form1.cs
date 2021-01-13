@@ -13,8 +13,8 @@ namespace Game_of_Life
     public partial class Form1 : Form
     {
         // The array sizes
-        const int _X = 5;
-        const int _Y = 5;
+        const int _X = 10;
+        const int _Y = 10;
 
         // The arrays
         bool[,] universe = new bool[_X, _Y];
@@ -781,11 +781,31 @@ namespace Game_of_Life
             GOdlg.Seed = seedInt; 
             GOdlg.Milliseconds = timer.Interval;
 
+            if (finite)
+            {
+                GOdlg.BoundarySize = "Finite";
+            }
+            else
+            {
+                GOdlg.BoundarySize = "Toroidal";
+            }
+
             if (DialogResult.OK == GOdlg.ShowDialog())
             {
                 seedInt = GOdlg.Seed;
                 timer.Interval = GOdlg.Milliseconds;
+
+                if (GOdlg.BoundarySize == "Finite")
+                {
+                    finite = true;
+                }
+                else
+                {
+                    finite = false;
+                }
             }
+
+            graphicsPanel1.Invalidate();
         }
 
         // Clicking Randomize in file menu

@@ -43,6 +43,19 @@ namespace Game_of_Life
             }
         }
 
+        //
+        public string BoundarySize
+        {
+            get
+            {
+                return boundarySizeListBox.SelectedItem.ToString();
+            }
+            set
+            {
+                boundarySizeListBox.SelectedItem = (object)value;
+            }
+        }
+
         // Clicking randomize next to seed
         private void randSeedButton_Click(object sender, EventArgs e)
         {

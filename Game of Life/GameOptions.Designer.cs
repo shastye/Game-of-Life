@@ -35,6 +35,8 @@
             this.randSeedButton = new System.Windows.Forms.Button();
             this.millisecondsLabel = new System.Windows.Forms.Label();
             this.millisecondsUpDown = new System.Windows.Forms.NumericUpDown();
+            this.boundarySizeListBox = new System.Windows.Forms.ListBox();
+            this.boundaryStyleLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.millisecondsUpDown)).BeginInit();
             this.SuspendLayout();
@@ -107,9 +109,44 @@
             // millisecondsUpDown
             // 
             this.millisecondsUpDown.Location = new System.Drawing.Point(238, 87);
+            this.millisecondsUpDown.Maximum = new decimal(new int[] {
+            600,
+            0,
+            0,
+            0});
+            this.millisecondsUpDown.Minimum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
             this.millisecondsUpDown.Name = "millisecondsUpDown";
             this.millisecondsUpDown.Size = new System.Drawing.Size(120, 20);
             this.millisecondsUpDown.TabIndex = 6;
+            this.millisecondsUpDown.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // boundarySizeListBox
+            // 
+            this.boundarySizeListBox.FormattingEnabled = true;
+            this.boundarySizeListBox.Items.AddRange(new object[] {
+            "Finite",
+            "Toroidal"});
+            this.boundarySizeListBox.Location = new System.Drawing.Point(238, 138);
+            this.boundarySizeListBox.Name = "boundarySizeListBox";
+            this.boundarySizeListBox.Size = new System.Drawing.Size(120, 30);
+            this.boundarySizeListBox.TabIndex = 7;
+            // 
+            // boundaryStyleLabel
+            // 
+            this.boundaryStyleLabel.AutoSize = true;
+            this.boundaryStyleLabel.Location = new System.Drawing.Point(152, 147);
+            this.boundaryStyleLabel.Name = "boundaryStyleLabel";
+            this.boundaryStyleLabel.Size = new System.Drawing.Size(78, 13);
+            this.boundaryStyleLabel.TabIndex = 8;
+            this.boundaryStyleLabel.Text = "Boundary Style";
             // 
             // GameOptionsForm
             // 
@@ -117,6 +154,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(509, 272);
+            this.Controls.Add(this.boundaryStyleLabel);
+            this.Controls.Add(this.boundarySizeListBox);
             this.Controls.Add(this.millisecondsUpDown);
             this.Controls.Add(this.millisecondsLabel);
             this.Controls.Add(this.randSeedButton);
@@ -143,5 +182,7 @@
         private System.Windows.Forms.Button randSeedButton;
         private System.Windows.Forms.Label millisecondsLabel;
         private System.Windows.Forms.NumericUpDown millisecondsUpDown;
+        private System.Windows.Forms.ListBox boundarySizeListBox;
+        private System.Windows.Forms.Label boundaryStyleLabel;
     }
 }
