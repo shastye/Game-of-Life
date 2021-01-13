@@ -23,7 +23,7 @@ namespace Game_of_Life
 
         // Variables for randomizing the seed and the grid
         Random randSeed = new Random();
-        int seed = 2020;
+        int seed = 2019;
         Random randGrid;        
 
         //Writing out neighbors for all cells
@@ -580,6 +580,18 @@ namespace Game_of_Life
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GameOptionsForm GOdlg = new GameOptionsForm();
+
+            GOdlg.Seed = seed;
+
+            if (DialogResult.OK == GOdlg.ShowDialog())
+            {
+                seed = GOdlg.Seed;
+            }
         }
     }
 }
