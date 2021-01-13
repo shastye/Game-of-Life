@@ -16,7 +16,7 @@ namespace Game_of_Life
         const int _X = 5;
         const int _Y = 5;
 
-        // The universe, neighbors, and scratch pad arrays
+        // The arrays
         bool[,] universe = new bool[_X, _Y];
         bool[,] scratchPad = new bool[_X, _Y];
         int[,] neighbors = new int[_X, _Y];
@@ -70,6 +70,25 @@ namespace Game_of_Life
 
             // Update status strip generations
             toolStripStatusLabelGenerations.Text = "Generations = " + generations.ToString();
+
+            //Stop the timer if all cells are dead
+            int totalLiving = 0;
+
+            for (int x = 0; x < _X; x++)
+            {
+                for (int y = 0; y < _X; y++)
+                {
+                    if (universe[x,y] == true)
+                    {
+                        totalLiving++;
+                    }
+                }
+            }
+
+            if (totalLiving == 0 && timer.Enabled == true)
+            {
+                timer.Enabled = false;
+            }
         }
 
         // Method for counting the neighbors
@@ -546,6 +565,16 @@ namespace Game_of_Life
             }
 
             graphicsPanel1.Invalidate();
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            timer.Enabled = false;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
