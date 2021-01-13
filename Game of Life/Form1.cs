@@ -19,6 +19,7 @@ namespace Game_of_Life
         // The arrays
         bool[,] universe = new bool[_X, _Y];
         bool[,] scratchPad = new bool[_X, _Y];
+        bool[,] original = new bool[_X, _Y];
         int[,] neighbors = new int[_X, _Y];
 
         // Variables for randomizing the seed and the grid
@@ -294,7 +295,7 @@ namespace Game_of_Life
             universe = scratchPad;
             scratchPad = temp;
 
-            //universe = temp;
+            universe = temp;
 
             for (int y = 0; y < universe.GetLength(1); y++)
             {
@@ -502,6 +503,14 @@ namespace Game_of_Life
         // Start the game using run menu item
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            for (int x = 0; x < universe.GetLength(0); x++)
+            {
+                for (int y = 0; y < universe.GetLength(1); y++)
+                {
+                    original[x, y] = universe[x, y];
+                }
+            }
+
             timer.Enabled = true;
         }
 
@@ -580,7 +589,13 @@ namespace Game_of_Life
         // Clicking the stop menu item
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            bool[,] temp = universe;
+            universe = original;
+            original = temp;
+
             timer.Enabled = false;
+
+            graphicsPanel1.Invalidate();
         }
 
         // Clicking the exit menu item
