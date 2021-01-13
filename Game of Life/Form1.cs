@@ -93,6 +93,7 @@ namespace Game_of_Life
             //Apply the rules to the universe
             scratchPad = ApplyRules();
             universe = scratchPad;
+
             graphicsPanel1.Invalidate();
 
             // Increment generation count
@@ -110,15 +111,11 @@ namespace Game_of_Life
         }
 
         // Method for counting the neighbors
-        // Treating as toroidal (top left corner neighbors bottom right corner)
         // I totally didn't even see the coding tutorial for this, so it looks a lot different than that
         private int CountNeighbors(int xPos, int yPos)
         {
-
             // The number of living neighbors
             int neighbors = 0;
-
-
 
             // Fit xPos and yPos into discrete array
             if (universe.GetLength(0) < xPos)
@@ -139,13 +136,49 @@ namespace Game_of_Life
                 yPos += universe.GetLength(1);
             }
 
-
-
             // Temp x and y (wasn't sure if changing xPos and yPos directly would affect later code)
             int xTemp = xPos;
             int yTemp = yPos;
 
-            // Wrap around
+            // Finite functions
+            void xFinite_l(out int x) //left is an edge
+            {
+                if (xTemp - 1 < 0)
+                {
+                    xTemp = universe.GetLength(0) + 3;
+                }
+
+                x = xTemp;
+            }
+            void xFinite_r(out int x) //right is an edge
+            {
+                if (xTemp + 1 >= universe.GetLength(0))
+                {
+                    xTemp = universe.GetLength(0) + 3;
+                }
+
+                x = xTemp;
+            }
+            void yFinite_t(out int y) //top is an edge
+            {
+                if (yTemp - 1 < 0)
+                {
+                    yTemp = universe.GetLength(1) + 3;
+                }
+
+                y = yTemp;
+            }
+            void yFinite_b(out int y) //bottom is an edge
+            {
+                if (yTemp + 1 >= universe.GetLength(1))
+                {
+                    yTemp = universe.GetLength(1) + 3;
+                }
+
+                y = yTemp;
+            }
+
+            // Toroidal functions
             void xToroidal_l(out int x) //left is an edge
             {
                 if (xTemp - 1 < 0)
@@ -186,76 +219,168 @@ namespace Game_of_Life
             // Methods for checking each surrounding neighbor
             void UpperLeft()
             {
-                xToroidal_l(out xTemp);
-                yToroidal_t(out yTemp);
+                if (finite)
+                {
+                    xFinite_l(out xTemp);
+                    yFinite_t(out yTemp);
+                }
+                else
+                {
+                    xToroidal_l(out xTemp);
+                    yToroidal_t(out yTemp);
+                }
 
-                if (universe[xTemp - 1, yTemp - 1] == true) //top left corner
+                if (xTemp - 1 == universe.GetLength(0) + 2 || yTemp - 1 == universe.GetLength(1) + 2)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp - 1, yTemp - 1] == true) //top left corner
                 {
                     neighbors++;
                 }
             }
             void Left()
             {
-                xToroidal_l(out xTemp);
+                if (finite)
+                {
+                    xFinite_l(out xTemp);
+                }
+                else
+                {
+                    xToroidal_l(out xTemp);
+                }
 
-                if (universe[xTemp - 1, yTemp] == true) //directly to left
+                if (xTemp - 1 == universe.GetLength(0) + 2)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp - 1, yTemp] == true) //directly to left
                 {
                     neighbors++;
                 }
             }
             void LowerLeft()
             {
-                xToroidal_l(out xTemp);
-                yToroidal_b(out yTemp);
+                if (finite)
+                {
+                    xFinite_l(out xTemp);
+                    yFinite_b(out yTemp);
+                }
+                else
+                {
+                    xToroidal_l(out xTemp);
+                    yToroidal_b(out yTemp);
+                }
 
-                if (universe[xTemp - 1, yTemp + 1] == true) //bottom left corner
+                if (xTemp - 1 == universe.GetLength(0) + 2 || yTemp + 1 == universe.GetLength(1) + 4)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp - 1, yTemp + 1] == true) //bottom left corner
                 {
                     neighbors++;
                 }
             }
             void Above()
             {
-                yToroidal_t(out yTemp);
+                if (finite)
+                {
+                    yFinite_t(out yTemp);
+                }
+                else
+                {
+                    yToroidal_t(out yTemp);
+                }
 
-                if (universe[xTemp, yTemp - 1] == true) //directly above
+                if (yTemp - 1 == universe.GetLength(1) + 2)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp, yTemp - 1] == true) //directly above
                 {
                     neighbors++;
                 }
             }
             void Below()
             {
-                yToroidal_b(out yTemp);
+                if (finite)
+                {
+                    yFinite_b(out yTemp);
+                }
+                else
+                {
+                    yToroidal_b(out yTemp);
+                }
 
-                if (universe[xTemp, yTemp + 1] == true) //directly below
+                if (yTemp + 1 == universe.GetLength(1) + 4)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp, yTemp + 1] == true) //directly below
                 {
                     neighbors++;
                 }
             }
             void UpperRight()
             {
-                xToroidal_r(out xTemp);
-                yToroidal_t(out yTemp);
+                if (finite)
+                {
+                    xFinite_r(out xTemp);
+                    yFinite_t(out yTemp);
+                }
+                else
+                {
+                    xToroidal_r(out xTemp);
+                    yToroidal_t(out yTemp);
+                }
 
-                if (universe[xTemp + 1, yTemp - 1] == true) //upper right corner
+                if (xTemp + 1 == universe.GetLength(0) + 4 || yTemp - 1 == universe.GetLength(1) + 2)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp + 1, yTemp - 1] == true) //upper right corner
                 {
                     neighbors++;
                 }
             }
             void Right()
             {
-                xToroidal_r(out xTemp);
+                if (finite)
+                {
+                    xFinite_r(out xTemp);
+                }
+                else
+                {
+                    xToroidal_r(out xTemp);
+                }
 
-                if (universe[xTemp + 1, yTemp] == true) //directly to right
+                if (xTemp + 1 == universe.GetLength(0) + 4)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp + 1, yTemp] == true) //directly to right
                 {
                     neighbors++;
                 }
             }
             void LowerRight()
             {
-                xToroidal_r(out xTemp);
-                yToroidal_b(out yTemp);
+                if (finite)
+                {
+                    xFinite_r(out xTemp);
+                    yFinite_b(out yTemp);
+                }
+                else
+                {
+                    xToroidal_r(out xTemp);
+                    yToroidal_b(out yTemp);
+                }
 
-                if (universe[xTemp + 1, yTemp + 1] == true) //bottom right corner
+                if (xTemp + 1 == universe.GetLength(0) + 4 || yTemp + 1 == universe.GetLength(1) + 4)
+                {
+                    //do nothing except skip where it checks universe[x, y]
+                }
+                else if (universe[xTemp + 1, yTemp + 1] == true) //bottom right corner
                 {
                     neighbors++;
                 }
@@ -295,12 +420,12 @@ namespace Game_of_Life
             xTemp = xPos;
             yTemp = yPos;
             LowerRight();
-
+            
 
 
             return neighbors;
         }
-
+                
         // Applying the rules to the scratchpad
         private bool[,] ApplyRules()
         {

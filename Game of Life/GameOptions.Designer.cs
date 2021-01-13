@@ -107,24 +107,9 @@
             // millisecondsUpDown
             // 
             this.millisecondsUpDown.Location = new System.Drawing.Point(238, 87);
-            this.millisecondsUpDown.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.millisecondsUpDown.Minimum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
             this.millisecondsUpDown.Name = "millisecondsUpDown";
             this.millisecondsUpDown.Size = new System.Drawing.Size(120, 20);
             this.millisecondsUpDown.TabIndex = 6;
-            this.millisecondsUpDown.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
             // 
             // GameOptionsForm
             // 
