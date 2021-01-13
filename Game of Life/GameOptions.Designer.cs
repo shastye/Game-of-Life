@@ -28,33 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CancelButton = new System.Windows.Forms.Button();
-            this.OKButton = new System.Windows.Forms.Button();
+            this.cancelButton = new System.Windows.Forms.Button();
+            this.okButton = new System.Windows.Forms.Button();
             this.seedLabel = new System.Windows.Forms.Label();
             this.seedUpDown = new System.Windows.Forms.NumericUpDown();
             this.randSeedButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // CancelButton
+            // cancelButton
             // 
-            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.CancelButton.Location = new System.Drawing.Point(289, 237);
-            this.CancelButton.Name = "CancelButton";
-            this.CancelButton.Size = new System.Drawing.Size(75, 23);
-            this.CancelButton.TabIndex = 0;
-            this.CancelButton.Text = "Cancel";
-            this.CancelButton.UseVisualStyleBackColor = true;
+            this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cancelButton.Location = new System.Drawing.Point(289, 237);
+            this.cancelButton.Name = "cancelButton";
+            this.cancelButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelButton.TabIndex = 0;
+            this.cancelButton.Text = "Cancel";
+            this.cancelButton.UseVisualStyleBackColor = true;
             // 
-            // OKButton
+            // okButton
             // 
-            this.OKButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.OKButton.Location = new System.Drawing.Point(208, 237);
-            this.OKButton.Name = "OKButton";
-            this.OKButton.Size = new System.Drawing.Size(75, 23);
-            this.OKButton.TabIndex = 1;
-            this.OKButton.Text = "Okay";
-            this.OKButton.UseVisualStyleBackColor = true;
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.okButton.Location = new System.Drawing.Point(208, 237);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 1;
+            this.okButton.Text = "Okay";
+            this.okButton.UseVisualStyleBackColor = true;
             // 
             // seedLabel
             // 
@@ -94,15 +94,15 @@
             // 
             // GameOptionsForm
             // 
-            this.AcceptButton = this.OKButton;
+            this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(376, 272);
             this.Controls.Add(this.randSeedButton);
             this.Controls.Add(this.seedUpDown);
             this.Controls.Add(this.seedLabel);
-            this.Controls.Add(this.OKButton);
-            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.okButton);
+            this.Controls.Add(this.cancelButton);
             this.Name = "GameOptionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Game Options";
@@ -114,8 +114,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Button CancelButton;
-        private System.Windows.Forms.Button OKButton;
+        private System.Windows.Forms.Button cancelButton;
+        private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Label seedLabel;
         private System.Windows.Forms.NumericUpDown seedUpDown;
         private System.Windows.Forms.Button randSeedButton;

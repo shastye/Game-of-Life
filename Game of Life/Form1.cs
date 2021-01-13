@@ -22,8 +22,8 @@ namespace Game_of_Life
         int[,] neighbors = new int[_X, _Y];
 
         // Variables for randomizing the seed and the grid
-        int seed = 2019;
-        Random randGrid;        
+        static int seedInt = 2019;
+        Random rand;
 
         //Writing out neighbors for all cells
         Font font = new Font("Arial", 10f);
@@ -585,12 +585,34 @@ namespace Game_of_Life
         {
             GameOptionsForm GOdlg = new GameOptionsForm();
 
-            GOdlg.Seed = seed;
+            GOdlg.Seed = seedInt;
 
             if (DialogResult.OK == GOdlg.ShowDialog())
             {
-                seed = GOdlg.Seed;
+                seedInt = GOdlg.Seed;
             }
+        }
+
+        private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            rand = new Random(seedInt);
+
+            for (int x = 0; x < universe.GetLength(0); x++)
+            {
+                for (int y = 0; y < universe.GetLength(1); y++)
+                {
+                    universe[x, y] = false;
+
+                    int randLiving = rand.Next(3);
+
+                    if (randLiving == 0)
+                    {
+                        universe[x, y] = true;
+                    }
+                }
+            }
+
+            graphicsPanel1.Invalidate();
         }
     }
 }
