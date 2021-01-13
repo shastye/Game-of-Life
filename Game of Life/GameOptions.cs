@@ -30,6 +30,19 @@ namespace Game_of_Life
             }
         }
 
+        // Allows access to timer value in Form1
+        public int Milliseconds
+        {
+            get
+            {
+                return (int)millisecondsUpDown.Value;
+            }
+            set
+            {
+                millisecondsUpDown.Value = (decimal)value;
+            }
+        }
+
         // Clicking randomize next to seed
         private void randSeedButton_Click(object sender, EventArgs e)
         {

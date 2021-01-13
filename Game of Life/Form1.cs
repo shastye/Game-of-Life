@@ -621,11 +621,13 @@ namespace Game_of_Life
         {
             GameOptionsForm GOdlg = new GameOptionsForm();
 
-            GOdlg.Seed = seedInt;
+            GOdlg.Seed = seedInt; 
+            GOdlg.Milliseconds = timer.Interval;
 
             if (DialogResult.OK == GOdlg.ShowDialog())
             {
                 seedInt = GOdlg.Seed;
+                timer.Interval = GOdlg.Milliseconds;
             }
         }
 
