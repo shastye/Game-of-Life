@@ -26,7 +26,12 @@ namespace Game_of_Life
         static int seedInt = 2019;
         Random rand;
 
-        //Writing out neighbors for all cells
+        // Variables for toggling the view functions
+        bool gridDisplay = true;
+        bool neighborDisplay = true;
+        bool hudDisplay = true;
+
+        // Writing out neighbors for all cells
         Font font = new Font("Arial", 10f);
 
         // Drawing colors
@@ -396,26 +401,32 @@ namespace Game_of_Life
                     }
 
                     // Outline the cell with a pen
-                    e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+                    if (gridDisplay)
+                    {
+                        e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+                    }
 
                     // Draw neighbors in grid
-                    StringFormat stringFormat = new StringFormat();
-                    stringFormat.Alignment = StringAlignment.Center;
-                    stringFormat.LineAlignment = StringAlignment.Center;
+                    if (neighborDisplay)
+                    {
+                        StringFormat stringFormat = new StringFormat();
+                        stringFormat.Alignment = StringAlignment.Center;
+                        stringFormat.LineAlignment = StringAlignment.Center;
 
-                    Brush numbers;
-                    if (universe[x, y] == true)
-                    {
-                        numbers = new SolidBrush(livingNumberColor);
-                    }
-                    else
-                    {
-                        numbers = new SolidBrush(deadNumberColor);
-                    }
+                        Brush numbers;
+                        if (universe[x, y] == true)
+                        {
+                            numbers = new SolidBrush(livingNumberColor);
+                        }
+                        else
+                        {
+                            numbers = new SolidBrush(deadNumberColor);
+                        }
 
-                    if (CountNeighbors(x, y) > 0 || universe[x, y] == true)
-                    {
-                        e.Graphics.DrawString(CountNeighbors(x, y).ToString(), font, numbers, cellRect, stringFormat);
+                        if (CountNeighbors(x, y) > 0 || universe[x, y] == true)
+                        {
+                            e.Graphics.DrawString(CountNeighbors(x, y).ToString(), font, numbers, cellRect, stringFormat);
+                        }
                     }
                 }
             }
@@ -652,6 +663,21 @@ namespace Game_of_Life
                     }
                 }
             }
+
+            graphicsPanel1.Invalidate();
+        }
+
+        // Toggle grid in view
+        private void toggleGridToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            gridDisplay = !gridDisplay;
+
+            graphicsPanel1.Invalidate();
+        }
+
+        private void toggleNeighborCountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            neighborDisplay = !neighborDisplay;
 
             graphicsPanel1.Invalidate();
         }
