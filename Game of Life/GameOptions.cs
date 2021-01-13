@@ -17,6 +17,7 @@ namespace Game_of_Life
             InitializeComponent();
         }
 
+        // Allows access to seed value in Form1
         public int Seed
         {
             get
@@ -29,6 +30,7 @@ namespace Game_of_Life
             }
         }
 
+        // Clicking randomize next to seed
         private void randSeedButton_Click(object sender, EventArgs e)
         {
             Random randSeed = new Random();

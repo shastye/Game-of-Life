@@ -545,6 +545,7 @@ namespace Game_of_Life
             cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
         }
 
+        // Changing the Color to the neighbor numbers within a living cell
         private void selectedBoxNumbersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -558,6 +559,7 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Changing the Color to the neighbor numbers within a dead cell
         private void unselectedBoxNumbersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();
@@ -571,16 +573,19 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Clicking the stop menu item
         private void stopToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
         }
 
+        // Clicking the exit menu item
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        // Clicking the Options item in settings menu
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GameOptionsForm GOdlg = new GameOptionsForm();
@@ -593,6 +598,7 @@ namespace Game_of_Life
             }
         }
 
+        // Clicking Randomize in file menu
         private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             rand = new Random(seedInt);
