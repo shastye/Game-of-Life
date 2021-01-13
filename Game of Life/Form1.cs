@@ -290,7 +290,11 @@ namespace Game_of_Life
         // Applying the rules to the scratchpad
         private bool[,] ApplyRules()
         {
-            scratchPad = universe;
+            bool[,] temp = universe;
+            universe = scratchPad;
+            scratchPad = temp;
+
+            //universe = temp;
 
             for (int y = 0; y < universe.GetLength(1); y++)
             {
