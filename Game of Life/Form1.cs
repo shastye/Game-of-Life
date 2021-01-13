@@ -291,12 +291,17 @@ namespace Game_of_Life
         // Applying the rules to the scratchpad
         private bool[,] ApplyRules()
         {
+            bool[,] temp = universe;
+            universe = scratchPad;
+            scratchPad = temp;
+
+            universe = temp;
+
             for (int y = 0; y < universe.GetLength(1); y++)
             {
                 // Iterate through the universe in the x, left to right
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
-                    original[x, y] = universe[x, y];
                     neighbors[x, y] = CountNeighbors(x, y);
                 }
             }
