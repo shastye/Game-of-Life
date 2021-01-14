@@ -48,11 +48,11 @@ namespace Game_of_Life
         {
             get
             {
-                return boundarySizeListBox.SelectedItem.ToString();
+                return boundaryStyleComboBox.SelectedItem.ToString();
             }
             set
             {
-                boundarySizeListBox.SelectedItem = (object)value;
+                boundaryStyleComboBox.SelectedItem = (object)value;
             }
         }
 
