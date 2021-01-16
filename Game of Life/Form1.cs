@@ -126,13 +126,6 @@ namespace Game_of_Life
 
             // Update status strip
             generationsToolStripStatusLabel.Text = "Generations = " + generations.ToString();
-
-            //Stop the timer if all cells are dead
-            CountLivingCells();
-            if (livingCells == 0 && timer.Enabled == true)
-            {
-                timer.Enabled = false;
-            }
         }
 
         // Method for counting the neighbors
@@ -989,6 +982,47 @@ namespace Game_of_Life
                         rowNum++;
 
                         for (int xPos = 0; xPos < row.Length; xPos++)
+                        {
+                            if (row[xPos] == 'O')
+                            {
+                                universe[xPos, rowNum] = true;
+                            }
+                            else if (row[xPos] == '.')
+                            {
+                                universe[xPos, rowNum] = false;
+                            }
+                        }
+                    }
+                }
+
+                reader.Close();
+            }
+
+            graphicsPanel1.Invalidate();
+        }
+
+        private void importToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Odlg = new OpenFileDialog();
+            Odlg.Filter = "All Files|*.*|Cells|*.cells";
+            Odlg.FilterIndex = 2;
+
+            if (DialogResult.OK == Odlg.ShowDialog())
+            {
+                StreamReader reader = new StreamReader(Odlg.FileName);
+
+                // Iterate through the file , reading in the cells to fit current size
+                int rowNum = -1;
+                while (!reader.EndOfStream)
+                {
+                    // Read one row at a time
+                    string row = reader.ReadLine();
+                     
+                    if (row[0] != '!' && rowNum + 1 < universe.GetLength(1))
+                    {
+                        rowNum++;
+
+                        for (int xPos = 0; xPos < universe.GetLength(0); xPos++)
                         {
                             if (row[xPos] == 'O')
                             {
