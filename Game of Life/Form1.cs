@@ -105,9 +105,9 @@ namespace Game_of_Life
         {
             livingCells = 0;
 
-            for (int x = 0; x < _X; x++)
+            for (int x = 0; x < universe.GetLength(0); x++)
             {
-                for (int y = 0; y < _X; y++)
+                for (int y = 0; y < universe.GetLength(1); y++)
                 {
                     if (universe[x, y] == true)
                     {
@@ -516,9 +516,9 @@ namespace Game_of_Life
         {
             // Calculate the width and height of each cell in pixels
             // CELL WIDTH = WINDOW WIDTH / NUMBER OF CELLS IN X
-            int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
+            float cellWidth = (float)graphicsPanel1.ClientSize.Width / (float)universe.GetLength(0);
             // CELL HEIGHT = WINDOW HEIGHT / NUMBER OF CELLS IN Y
-            int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
+            float cellHeight = (float)graphicsPanel1.ClientSize.Height / (float)universe.GetLength(1);
 
             // A Pen for drawing the grid lines (color, width)
             Pen gridPen = new Pen(gridColor, 1);
@@ -537,11 +537,11 @@ namespace Game_of_Life
                 hudGenerationStatus.Text = "Current Generation = " + generations.ToString() + "  -";
                 if (finite)
                 {
-                    hudCellCountStatus.Text = "Boundary Style = Finite  -";
+                    hudBoundaryStyleStatus.Text = "Boundary Style = Finite  -";
                 }
                 else
                 {
-                    hudCellCountStatus.Text = "Boundary Style = Toroidal  -";
+                    hudBoundaryStyleStatus.Text = "Boundary Style = Toroidal  -";
                 }
                 hudUniverseSizeStatus.Text =
                     "Universe Size: {Height = " + universe.GetLength(1).ToString() +
@@ -554,10 +554,14 @@ namespace Game_of_Life
                 // Iterate through the universe in the x, left to right
                 for (int x = 0; x < universe.GetLength(0); x++)
                 {
+                    //Covert x and y to floats
+                    float yf = (float)y;
+                    float xf = (float)x;
+
                     // A rectangle to represent each cell in pixels
-                    Rectangle cellRect = Rectangle.Empty;
-                    cellRect.X = x * cellWidth;
-                    cellRect.Y = y * cellHeight;
+                    RectangleF cellRect = RectangleF.Empty;
+                    cellRect.X = xf * cellWidth;
+                    cellRect.Y = yf * cellHeight;
                     cellRect.Width = cellWidth;
                     cellRect.Height = cellHeight;
 
@@ -610,17 +614,20 @@ namespace Game_of_Life
             if (e.Button == MouseButtons.Left)
             {
                 // Calculate the width and height of each cell in pixels
-                int cellWidth = graphicsPanel1.ClientSize.Width / universe.GetLength(0);
-                int cellHeight = graphicsPanel1.ClientSize.Height / universe.GetLength(1);
+                float cellWidth = (float)graphicsPanel1.ClientSize.Width / (float)universe.GetLength(0);
+                float cellHeight = (float)graphicsPanel1.ClientSize.Height / (float)universe.GetLength(1);
 
                 // Calculate the cell that was clicked in
+                float mouseX = (float)e.X;
+                float mouseY = (float)e.Y;
+
                 // CELL X = MOUSE X / CELL WIDTH
-                int x = e.X / cellWidth;
+                float x = mouseX / cellWidth;
                 // CELL Y = MOUSE Y / CELL HEIGHT
-                int y = e.Y / cellHeight;
+                float y = mouseY / cellHeight;
 
                 // Toggle the cell's state
-                universe[x, y] = !universe[x, y];
+                universe[(int)x, (int)y] = !universe[(int)x, (int)y];
 
                 // Tell Windows you need to repaint
                 graphicsPanel1.Invalidate();
