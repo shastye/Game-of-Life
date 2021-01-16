@@ -68,6 +68,10 @@ namespace Game_of_Life
             livingNumberColor = Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor;
             deadNumberColor = Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor;
             timer.Interval = Properties.Settings.Default.Form1_TimerInterval;
+            ResizeArray(ref universe, Properties.Settings.Default.Form1_UniverseRows, Properties.Settings.Default.Form1_UniverseColumns);
+            ResizeArray(ref scratchPad, Properties.Settings.Default.Form1_UniverseRows, Properties.Settings.Default.Form1_UniverseColumns);
+            ResizeArray(ref neighbors, Properties.Settings.Default.Form1_UniverseRows, Properties.Settings.Default.Form1_UniverseColumns);
+            ResizeArray(ref original, Properties.Settings.Default.Form1_UniverseRows, Properties.Settings.Default.Form1_UniverseColumns);
         }
 
         // Resizing a 2D array 
@@ -723,6 +727,8 @@ namespace Game_of_Life
             Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor = livingNumberColor;
             Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor = deadNumberColor;
             Properties.Settings.Default.Form1_TimerInterval = timer.Interval;
+            Properties.Settings.Default.Form1_UniverseRows = universe.GetLength(0);
+            Properties.Settings.Default.Form1_UniverseColumns = universe.GetLength(1);
 
             Properties.Settings.Default.Save();
         }

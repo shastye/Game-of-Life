@@ -94,5 +94,29 @@ namespace Game_of_Life.Properties {
                 this["Form1_TimerInterval"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int Form1_UniverseRows {
+            get {
+                return ((int)(this["Form1_UniverseRows"]));
+            }
+            set {
+                this["Form1_UniverseRows"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        public int Form1_UniverseColumns {
+            get {
+                return ((int)(this["Form1_UniverseColumns"]));
+            }
+            set {
+                this["Form1_UniverseColumns"] = value;
+            }
+        }
     }
 }
