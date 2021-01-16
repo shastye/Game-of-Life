@@ -70,6 +70,26 @@ namespace Game_of_Life
             timer.Interval = Properties.Settings.Default.Form1_TimerInterval;
         }
 
+        // Resizing a 2D array 
+        private void ResizeArray(ref bool[,] ogArray, int newRows, int newCols)
+        {
+            var newArray = new bool[newRows, newCols];
+            int minRows = Math.Min(newRows, ogArray.GetLength(0));
+            int minCols = Math.Min(newCols, ogArray.GetLength(1));
+
+            for (int x = 0; x < minCols; x++)
+            {
+                for (int y = 0; y < minRows; y++)
+                {
+                    newArray[x, y] = ogArray[x, y];
+                }
+            }
+
+            bool[,] temp = ogArray;
+            ogArray = newArray;
+            newArray = temp;
+        }
+
         // Count living cells in the window
         private void CountLivingCells()
         {

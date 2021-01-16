@@ -100,7 +100,7 @@
             // millisecondsLabel
             // 
             this.millisecondsLabel.AutoSize = true;
-            this.millisecondsLabel.Location = new System.Drawing.Point(61, 91);
+            this.millisecondsLabel.Location = new System.Drawing.Point(61, 74);
             this.millisecondsLabel.Name = "millisecondsLabel";
             this.millisecondsLabel.Size = new System.Drawing.Size(169, 13);
             this.millisecondsLabel.TabIndex = 5;
@@ -108,7 +108,7 @@
             // 
             // millisecondsUpDown
             // 
-            this.millisecondsUpDown.Location = new System.Drawing.Point(238, 87);
+            this.millisecondsUpDown.Location = new System.Drawing.Point(238, 70);
             this.millisecondsUpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -131,7 +131,7 @@
             // boundaryStyleLabel
             // 
             this.boundaryStyleLabel.AutoSize = true;
-            this.boundaryStyleLabel.Location = new System.Drawing.Point(152, 147);
+            this.boundaryStyleLabel.Location = new System.Drawing.Point(151, 108);
             this.boundaryStyleLabel.Name = "boundaryStyleLabel";
             this.boundaryStyleLabel.Size = new System.Drawing.Size(78, 13);
             this.boundaryStyleLabel.TabIndex = 8;
@@ -146,7 +146,7 @@
             this.boundaryStyleComboBox.Items.AddRange(new object[] {
             "Finite",
             "Toroidal"});
-            this.boundaryStyleComboBox.Location = new System.Drawing.Point(238, 144);
+            this.boundaryStyleComboBox.Location = new System.Drawing.Point(237, 105);
             this.boundaryStyleComboBox.Name = "boundaryStyleComboBox";
             this.boundaryStyleComboBox.Size = new System.Drawing.Size(121, 21);
             this.boundaryStyleComboBox.TabIndex = 9;
