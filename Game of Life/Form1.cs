@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -894,6 +895,46 @@ namespace Game_of_Life
             }
 
             graphicsPanel1.Invalidate();
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog SFdlg = new SaveFileDialog();
+            SFdlg.Filter = "All Files|*.*|Cells|*.cells";
+            SFdlg.FilterIndex = 2;
+            SFdlg.DefaultExt = "cells";
+
+            if (DialogResult.OK == SFdlg.ShowDialog())
+            {
+                StreamWriter writer = new StreamWriter(SFdlg.FileName);
+
+                // Comments of save file
+                writer.WriteLine("!Save of GameOfLife game - Class COP-119 - Full Sail University.");
+                writer.WriteLine("!Game created by Sierra Clubb, 2020.");
+
+                // Iterate through the universe one row at a time
+                for (int y = 0; y < universe.GetLength(1); y++)
+                {
+                    StringBuilder currentRow = new StringBuilder();
+                    currentRow.Length = 0;
+
+                    for (int x = 0; x < universe.GetLength(0); x++)
+                    {
+                        if (universe[x, y] == true)
+                        {
+                            currentRow.Append('O');
+                        }
+                        else if (universe[x, y] == false)
+                        {
+                            currentRow.Append('.');
+                        }
+                    }
+
+                    writer.WriteLine(currentRow);
+                }
+
+                writer.Close();
+            }
         }
     }
 }
