@@ -225,7 +225,7 @@
             // universeSizeLabel
             // 
             this.universeSizeLabel.AutoSize = true;
-            this.universeSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.universeSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.universeSizeLabel.Location = new System.Drawing.Point(67, 182);
             this.universeSizeLabel.Name = "universeSizeLabel";
             this.universeSizeLabel.Size = new System.Drawing.Size(161, 24);
@@ -235,7 +235,7 @@
             // universeBehaviorLabel
             // 
             this.universeBehaviorLabel.AutoSize = true;
-            this.universeBehaviorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.universeBehaviorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.universeBehaviorLabel.Location = new System.Drawing.Point(25, 34);
             this.universeBehaviorLabel.Name = "universeBehaviorLabel";
             this.universeBehaviorLabel.Size = new System.Drawing.Size(203, 24);

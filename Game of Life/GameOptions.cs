@@ -30,6 +30,19 @@ namespace Game_of_Life
             }
         }
 
+        // Allows access to seed value maximum
+        public int SeedMax
+        {
+            get
+            {
+                return (int)seedUpDown.Maximum;
+            }
+            private set
+            {
+                seedUpDown.Maximum = value;
+            }
+        }
+
         // Allows access to timer value in Form1
         public int Milliseconds
         {

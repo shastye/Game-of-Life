@@ -62,6 +62,11 @@ namespace Game_of_Life
             timer.Tick += Timer_Tick;
             timer.Enabled = false; // start timer as not running
 
+            // Generate random seed from the beginning
+            Random temp = new Random();
+            GameOptionsForm dlg = new GameOptionsForm();
+            seedInt = temp.Next(dlg.SeedMax);
+
             // Read settings
             graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
             gridColor = Properties.Settings.Default.GraphicsPanel1_Gridcolor;
