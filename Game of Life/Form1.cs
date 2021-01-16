@@ -936,5 +936,76 @@ namespace Game_of_Life
                 writer.Close();
             }
         }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Odlg = new OpenFileDialog();
+            Odlg.Filter = "All Files|*.*|Cells|*.cells";
+            Odlg.FilterIndex = 2;
+
+            if (DialogResult.OK == Odlg.ShowDialog())
+            {
+                StreamReader reader = new StreamReader(Odlg.FileName);
+
+                // Variables for calculating width and height of file's universe
+                int maxWidth = 0;
+                int maxHeight = 0;
+
+                // Iterate through the file once to get its size
+                while (!reader.EndOfStream)
+                {
+                    // Read one row at a time
+                    string row = reader.ReadLine();
+
+                    if (row[0] != '!') //Ignore the comments
+                    {
+                        maxHeight++;
+
+                        if (maxWidth < row.Length)
+                        {
+                            maxWidth = row.Length;
+                        }
+                    }
+                }
+
+                // Resize current arrays in use
+                ResizeArray(ref universe, maxHeight, maxWidth);
+                ResizeArray(ref scratchPad, maxHeight, maxWidth);
+                ResizeArray(ref neighbors, maxHeight, maxWidth);
+                ResizeArray(ref original, maxHeight, maxWidth);
+
+                // Move pointer back to beginning of file
+                reader.BaseStream.Seek(0, SeekOrigin.Begin);
+
+                // Iterate through the file again, reading in the cells
+                int rowNum = -1;
+                while (!reader.EndOfStream)
+                {
+                    // Read one row at a time
+                    string row = reader.ReadLine();
+
+                    if (row[0] != '!')
+                    {
+                        rowNum++;
+
+                        for (int xPos = 0; xPos < row.Length; xPos++)
+                        {
+                            if (row[xPos] == 'O')
+                            {
+                                universe[xPos, rowNum] = true;
+                            }
+                            else if (row[xPos] == '.')
+                            {
+                                universe[xPos, rowNum] = false;
+                            }
+                        }
+                    }
+                }
+
+                reader.Close();
+            }
+
+            graphicsPanel1.Invalidate();
+        }
     }
 }
