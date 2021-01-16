@@ -37,14 +37,22 @@
             this.millisecondsUpDown = new System.Windows.Forms.NumericUpDown();
             this.boundaryStyleLabel = new System.Windows.Forms.Label();
             this.boundaryStyleComboBox = new System.Windows.Forms.ComboBox();
+            this.numRowsUpDown = new System.Windows.Forms.NumericUpDown();
+            this.numColsLabel = new System.Windows.Forms.Label();
+            this.numColsUpDown = new System.Windows.Forms.NumericUpDown();
+            this.numRowsLabel = new System.Windows.Forms.Label();
+            this.universeSizeLabel = new System.Windows.Forms.Label();
+            this.universeBehaviorLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.millisecondsUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRowsUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numColsUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // cancelButton
             // 
             this.cancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cancelButton.Location = new System.Drawing.Point(422, 237);
+            this.cancelButton.Location = new System.Drawing.Point(422, 293);
             this.cancelButton.Name = "cancelButton";
             this.cancelButton.Size = new System.Drawing.Size(75, 23);
             this.cancelButton.TabIndex = 0;
@@ -54,7 +62,7 @@
             // okButton
             // 
             this.okButton.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.okButton.Location = new System.Drawing.Point(341, 237);
+            this.okButton.Location = new System.Drawing.Point(341, 293);
             this.okButton.Name = "okButton";
             this.okButton.Size = new System.Drawing.Size(75, 23);
             this.okButton.TabIndex = 1;
@@ -64,7 +72,7 @@
             // seedLabel
             // 
             this.seedLabel.AutoSize = true;
-            this.seedLabel.Location = new System.Drawing.Point(198, 40);
+            this.seedLabel.Location = new System.Drawing.Point(197, 73);
             this.seedLabel.Name = "seedLabel";
             this.seedLabel.Size = new System.Drawing.Size(32, 13);
             this.seedLabel.TabIndex = 2;
@@ -72,7 +80,7 @@
             // 
             // seedUpDown
             // 
-            this.seedUpDown.Location = new System.Drawing.Point(238, 36);
+            this.seedUpDown.Location = new System.Drawing.Point(237, 69);
             this.seedUpDown.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -89,7 +97,7 @@
             // 
             // randSeedButton
             // 
-            this.randSeedButton.Location = new System.Drawing.Point(364, 35);
+            this.randSeedButton.Location = new System.Drawing.Point(363, 68);
             this.randSeedButton.Name = "randSeedButton";
             this.randSeedButton.Size = new System.Drawing.Size(75, 23);
             this.randSeedButton.TabIndex = 4;
@@ -100,7 +108,7 @@
             // millisecondsLabel
             // 
             this.millisecondsLabel.AutoSize = true;
-            this.millisecondsLabel.Location = new System.Drawing.Point(61, 74);
+            this.millisecondsLabel.Location = new System.Drawing.Point(60, 107);
             this.millisecondsLabel.Name = "millisecondsLabel";
             this.millisecondsLabel.Size = new System.Drawing.Size(169, 13);
             this.millisecondsLabel.TabIndex = 5;
@@ -108,7 +116,7 @@
             // 
             // millisecondsUpDown
             // 
-            this.millisecondsUpDown.Location = new System.Drawing.Point(238, 70);
+            this.millisecondsUpDown.Location = new System.Drawing.Point(237, 103);
             this.millisecondsUpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -131,7 +139,7 @@
             // boundaryStyleLabel
             // 
             this.boundaryStyleLabel.AutoSize = true;
-            this.boundaryStyleLabel.Location = new System.Drawing.Point(151, 108);
+            this.boundaryStyleLabel.Location = new System.Drawing.Point(150, 141);
             this.boundaryStyleLabel.Name = "boundaryStyleLabel";
             this.boundaryStyleLabel.Size = new System.Drawing.Size(78, 13);
             this.boundaryStyleLabel.TabIndex = 8;
@@ -146,18 +154,106 @@
             this.boundaryStyleComboBox.Items.AddRange(new object[] {
             "Finite",
             "Toroidal"});
-            this.boundaryStyleComboBox.Location = new System.Drawing.Point(237, 105);
+            this.boundaryStyleComboBox.Location = new System.Drawing.Point(236, 138);
             this.boundaryStyleComboBox.Name = "boundaryStyleComboBox";
             this.boundaryStyleComboBox.Size = new System.Drawing.Size(121, 21);
             this.boundaryStyleComboBox.TabIndex = 9;
             this.boundaryStyleComboBox.Text = "Toroidal";
+            // 
+            // numRowsUpDown
+            // 
+            this.numRowsUpDown.Location = new System.Drawing.Point(237, 253);
+            this.numRowsUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numRowsUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numRowsUpDown.Name = "numRowsUpDown";
+            this.numRowsUpDown.Size = new System.Drawing.Size(120, 20);
+            this.numRowsUpDown.TabIndex = 10;
+            this.numRowsUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // numColsLabel
+            // 
+            this.numColsLabel.AutoSize = true;
+            this.numColsLabel.Location = new System.Drawing.Point(130, 221);
+            this.numColsLabel.Name = "numColsLabel";
+            this.numColsLabel.Size = new System.Drawing.Size(99, 13);
+            this.numColsLabel.TabIndex = 11;
+            this.numColsLabel.Text = "Number of Columns";
+            // 
+            // numColsUpDown
+            // 
+            this.numColsUpDown.Location = new System.Drawing.Point(237, 219);
+            this.numColsUpDown.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numColsUpDown.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.numColsUpDown.Name = "numColsUpDown";
+            this.numColsUpDown.Size = new System.Drawing.Size(120, 20);
+            this.numColsUpDown.TabIndex = 12;
+            this.numColsUpDown.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
+            // numRowsLabel
+            // 
+            this.numRowsLabel.AutoSize = true;
+            this.numRowsLabel.Location = new System.Drawing.Point(142, 255);
+            this.numRowsLabel.Name = "numRowsLabel";
+            this.numRowsLabel.Size = new System.Drawing.Size(86, 13);
+            this.numRowsLabel.TabIndex = 13;
+            this.numRowsLabel.Text = "Number of Rows";
+            // 
+            // universeSizeLabel
+            // 
+            this.universeSizeLabel.AutoSize = true;
+            this.universeSizeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.universeSizeLabel.Location = new System.Drawing.Point(67, 182);
+            this.universeSizeLabel.Name = "universeSizeLabel";
+            this.universeSizeLabel.Size = new System.Drawing.Size(161, 24);
+            this.universeSizeLabel.TabIndex = 14;
+            this.universeSizeLabel.Text = "Size of Universe";
+            // 
+            // universeBehaviorLabel
+            // 
+            this.universeBehaviorLabel.AutoSize = true;
+            this.universeBehaviorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.universeBehaviorLabel.Location = new System.Drawing.Point(25, 34);
+            this.universeBehaviorLabel.Name = "universeBehaviorLabel";
+            this.universeBehaviorLabel.Size = new System.Drawing.Size(203, 24);
+            this.universeBehaviorLabel.TabIndex = 15;
+            this.universeBehaviorLabel.Text = "Behavior of Universe";
             // 
             // GameOptionsForm
             // 
             this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(509, 272);
+            this.ClientSize = new System.Drawing.Size(509, 327);
+            this.Controls.Add(this.universeBehaviorLabel);
+            this.Controls.Add(this.universeSizeLabel);
+            this.Controls.Add(this.numRowsLabel);
+            this.Controls.Add(this.numColsUpDown);
+            this.Controls.Add(this.numColsLabel);
+            this.Controls.Add(this.numRowsUpDown);
             this.Controls.Add(this.boundaryStyleComboBox);
             this.Controls.Add(this.boundaryStyleLabel);
             this.Controls.Add(this.millisecondsUpDown);
@@ -172,6 +268,8 @@
             this.Text = "Game Options";
             ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.millisecondsUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numRowsUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numColsUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -188,5 +286,11 @@
         private System.Windows.Forms.NumericUpDown millisecondsUpDown;
         private System.Windows.Forms.Label boundaryStyleLabel;
         private System.Windows.Forms.ComboBox boundaryStyleComboBox;
+        private System.Windows.Forms.NumericUpDown numRowsUpDown;
+        private System.Windows.Forms.Label numColsLabel;
+        private System.Windows.Forms.NumericUpDown numColsUpDown;
+        private System.Windows.Forms.Label numRowsLabel;
+        private System.Windows.Forms.Label universeSizeLabel;
+        private System.Windows.Forms.Label universeBehaviorLabel;
     }
 }

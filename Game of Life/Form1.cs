@@ -71,9 +71,9 @@ namespace Game_of_Life
         }
 
         // Resizing a 2D array 
-        private void ResizeArray(ref bool[,] ogArray, int newRows, int newCols)
+        private void ResizeArray<T>(ref T[,] ogArray, int newRows, int newCols)
         {
-            var newArray = new bool[newRows, newCols];
+            var newArray = new T[newRows, newCols];
             int minRows = Math.Min(newRows, ogArray.GetLength(0));
             int minCols = Math.Min(newCols, ogArray.GetLength(1));
 
@@ -85,7 +85,7 @@ namespace Game_of_Life
                 }
             }
 
-            bool[,] temp = ogArray;
+            T[,] temp = ogArray;
             ogArray = newArray;
             newArray = temp;
         }
@@ -800,14 +800,15 @@ namespace Game_of_Life
 
             GOdlg.Seed = seedInt; 
             GOdlg.Milliseconds = timer.Interval;
-
+            GOdlg.Rows = universe.GetLength(0);
+            GOdlg.Columns = universe.GetLength(1);
             if (finite)
             {
-                GOdlg.BoundarySize = "Finite";
+                GOdlg.BoundaryStyle = "Finite";
             }
             else
             {
-                GOdlg.BoundarySize = "Toroidal";
+                GOdlg.BoundaryStyle = "Toroidal";
             }
 
             if (DialogResult.OK == GOdlg.ShowDialog())
@@ -815,7 +816,11 @@ namespace Game_of_Life
                 seedInt = GOdlg.Seed;
                 timer.Interval = GOdlg.Milliseconds;
 
-                if (GOdlg.BoundarySize == "Finite")
+                ResizeArray(ref universe, GOdlg.Rows, GOdlg.Columns);
+                ResizeArray(ref scratchPad, GOdlg.Rows, GOdlg.Columns);
+                ResizeArray(ref neighbors, GOdlg.Rows, GOdlg.Columns);
+
+                if (GOdlg.BoundaryStyle == "Finite")
                 {
                     finite = true;
                 }

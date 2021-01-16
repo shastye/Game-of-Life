@@ -43,8 +43,8 @@ namespace Game_of_Life
             }
         }
 
-        //
-        public string BoundarySize
+        // Allows access to boundary style
+        public string BoundaryStyle
         {
             get
             {
@@ -53,6 +53,32 @@ namespace Game_of_Life
             set
             {
                 boundaryStyleComboBox.SelectedItem = (object)value;
+            }
+        }
+
+        //Allows access to number of rows
+        public int Rows
+        {
+            get
+            {
+                return (int)numRowsUpDown.Value;
+            }
+            set
+            {
+                numRowsUpDown.Value = (decimal)value;
+            }
+        }
+
+        //Allows access to number of cols
+        public int Columns
+        {
+            get
+            {
+                return (int)numColsUpDown.Value;
+            }
+            set
+            {
+                numColsUpDown.Value = (decimal)value;
             }
         }
 
