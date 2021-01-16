@@ -13,8 +13,8 @@ namespace Game_of_Life
     public partial class Form1 : Form
     {
         // The array sizes
-        const int _X = 10;
-        const int _Y = 10;
+        const int _X = 5;
+        const int _Y = 5;
 
         // The arrays
         bool[,] universe = new bool[_X, _Y];
@@ -819,6 +819,7 @@ namespace Game_of_Life
                 ResizeArray(ref universe, GOdlg.Rows, GOdlg.Columns);
                 ResizeArray(ref scratchPad, GOdlg.Rows, GOdlg.Columns);
                 ResizeArray(ref neighbors, GOdlg.Rows, GOdlg.Columns);
+                ResizeArray(ref original, GOdlg.Rows, GOdlg.Columns);
 
                 if (GOdlg.BoundaryStyle == "Finite")
                 {
