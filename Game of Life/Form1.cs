@@ -78,8 +78,8 @@ namespace Game_of_Life
         private void ResizeArray<T>(ref T[,] ogArray, int newRows, int newCols)
         {
             var newArray = new T[newRows, newCols];
-            int minRows = Math.Min(newRows, ogArray.GetLength(0));
-            int minCols = Math.Min(newCols, ogArray.GetLength(1));
+            int minRows = Math.Min(newRows, ogArray.GetLength(1));
+            int minCols = Math.Min(newCols, ogArray.GetLength(0));
 
             for (int x = 0; x < minCols; x++)
             {
@@ -727,8 +727,8 @@ namespace Game_of_Life
             Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor = livingNumberColor;
             Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor = deadNumberColor;
             Properties.Settings.Default.Form1_TimerInterval = timer.Interval;
-            Properties.Settings.Default.Form1_UniverseRows = universe.GetLength(0);
-            Properties.Settings.Default.Form1_UniverseColumns = universe.GetLength(1);
+            Properties.Settings.Default.Form1_UniverseRows = universe.GetLength(1);
+            Properties.Settings.Default.Form1_UniverseColumns = universe.GetLength(0);
 
             Properties.Settings.Default.Save();
         }

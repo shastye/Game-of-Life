@@ -185,7 +185,7 @@
             // numColsLabel
             // 
             this.numColsLabel.AutoSize = true;
-            this.numColsLabel.Location = new System.Drawing.Point(130, 221);
+            this.numColsLabel.Location = new System.Drawing.Point(129, 255);
             this.numColsLabel.Name = "numColsLabel";
             this.numColsLabel.Size = new System.Drawing.Size(99, 13);
             this.numColsLabel.TabIndex = 11;
@@ -216,7 +216,7 @@
             // numRowsLabel
             // 
             this.numRowsLabel.AutoSize = true;
-            this.numRowsLabel.Location = new System.Drawing.Point(142, 255);
+            this.numRowsLabel.Location = new System.Drawing.Point(142, 221);
             this.numRowsLabel.Name = "numRowsLabel";
             this.numRowsLabel.Size = new System.Drawing.Size(86, 13);
             this.numRowsLabel.TabIndex = 13;
