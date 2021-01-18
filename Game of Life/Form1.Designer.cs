@@ -94,7 +94,9 @@
             this.hudCellCountStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.hudBoundaryStyleStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.hudUniverseSizeStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.seedToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.graphicsPanel1 = new Game_of_Life.GraphicsPanel();
+            this.intervalToolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -466,7 +468,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generationsToolStripStatusLabel,
-            this.livingCellsToolStripStatusLabel});
+            this.livingCellsToolStripStatusLabel,
+            this.seedToolStripStatusLabel,
+            this.intervalToolStripStatusLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 672);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(601, 22);
@@ -634,6 +638,12 @@
             this.hudUniverseSizeStatus.Size = new System.Drawing.Size(211, 17);
             this.hudUniverseSizeStatus.Text = "Universe Size = {Height = 5; Width = 5}";
             // 
+            // seedToolStripStatusLabel
+            // 
+            this.seedToolStripStatusLabel.Name = "seedToolStripStatusLabel";
+            this.seedToolStripStatusLabel.Size = new System.Drawing.Size(70, 17);
+            this.seedToolStripStatusLabel.Text = "Seed = 2019";
+            // 
             // graphicsPanel1
             // 
             this.graphicsPanel1.BackColor = System.Drawing.SystemColors.Window;
@@ -645,6 +655,12 @@
             this.graphicsPanel1.TabIndex = 3;
             this.graphicsPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.graphicsPanel1_Paint);
             this.graphicsPanel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.graphicsPanel1_MouseClick);
+            // 
+            // intervalToolStripStatusLabel
+            // 
+            this.intervalToolStripStatusLabel.Name = "intervalToolStripStatusLabel";
+            this.intervalToolStripStatusLabel.Size = new System.Drawing.Size(72, 17);
+            this.intervalToolStripStatusLabel.Text = "Interval = 20";
             // 
             // Form1
             // 
@@ -742,6 +758,8 @@
         private System.Windows.Forms.ToolStripMenuItem optionsContextMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem importToolStripMenuItem;
+        private System.Windows.Forms.ToolStripStatusLabel seedToolStripStatusLabel;
+        private System.Windows.Forms.ToolStripStatusLabel intervalToolStripStatusLabel;
     }
 }
 

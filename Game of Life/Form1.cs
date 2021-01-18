@@ -533,9 +533,11 @@ namespace Game_of_Life
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
 
-            // Update living cells count on status strip
+            // Update status strip
             CountLivingCells();
-            livingCellsToolStripStatusLabel.Text = "Living Cells = " + livingCells.ToString();
+            livingCellsToolStripStatusLabel.Text = "    Living Cells = " + livingCells.ToString();
+            seedToolStripStatusLabel.Text = "    Seed = " + seedInt.ToString();
+            intervalToolStripStatusLabel.Text = "    Interval = " + timer.Interval.ToString();
 
             // Update the HUD
             if (hudDisplay)
@@ -622,6 +624,7 @@ namespace Game_of_Life
 
             // Cleaning up pens and brushes
             gridPen.Dispose();
+            gridPenx10.Dispose();
             cellBrush.Dispose();
         }
 
