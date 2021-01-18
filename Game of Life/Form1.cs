@@ -33,14 +33,14 @@ namespace Game_of_Life
         bool hudDisplay = true;
         bool finite = false;
 
-        // Writing out neighbors for all cells
-        Font font = new Font("Arial", 10f);
-
         // Drawing colors
         Color gridColor = Color.Black;
         Color cellColor = Color.Gray;
         Color livingNumberColor = Color.White;
         Color deadNumberColor = Color.Black;
+
+        // For drawing neighbor numbers
+        Font font;
 
         // The Timer class
         Timer timer = new Timer();
@@ -580,6 +580,9 @@ namespace Game_of_Life
                     // Draw neighbors in grid
                     if (neighborDisplay)
                     {
+                        float neighborSize = (cellHeight / 3) * 2;
+                        font = new Font("Arial", neighborSize);
+
                         StringFormat stringFormat = new StringFormat();
                         stringFormat.Alignment = StringAlignment.Center;
                         stringFormat.LineAlignment = StringAlignment.Center;
