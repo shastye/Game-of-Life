@@ -35,6 +35,7 @@ namespace Game_of_Life
 
         // Drawing colors
         Color gridColor = Color.Black;
+        Color gridColorx10 = Color.Black;
         Color cellColor = Color.Gray;
         Color livingNumberColor = Color.White;
         Color deadNumberColor = Color.Black;
@@ -527,6 +528,7 @@ namespace Game_of_Life
 
             // A Pen for drawing the grid lines (color, width)
             Pen gridPen = new Pen(gridColor, 1);
+            Pen gridPenx10 = new Pen(gridColorx10, 3);
 
             // A Brush for filling living cells interiors (color)
             Brush cellBrush = new SolidBrush(cellColor);
@@ -570,6 +572,13 @@ namespace Game_of_Life
                     cellRect.Width = cellWidth;
                     cellRect.Height = cellHeight;
 
+                    // A rectangle to represent groups of 10 cells in pixels
+                    RectangleF cellRectx10 = RectangleF.Empty;
+                    cellRectx10.X = cellRect.X * 10f;
+                    cellRectx10.Y = cellRect.Y * 10f;
+                    cellRectx10.Width = cellRect.Width * 10;
+                    cellRectx10.Height = cellRect.Height * 10;
+
                     // Fill the cell with a brush if alive
                     if (universe[x, y] == true)
                     {
@@ -580,6 +589,7 @@ namespace Game_of_Life
                     if (gridDisplay)
                     {
                         e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
+                        e.Graphics.DrawRectangle(gridPenx10, cellRectx10.X, cellRectx10.Y, cellRectx10.Width, cellRectx10.Height);
                     }
 
                     // Draw neighbors in grid
@@ -910,6 +920,7 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Saving the universe
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog SFdlg = new SaveFileDialog();
@@ -950,6 +961,7 @@ namespace Game_of_Life
             }
         }
 
+        // Opening a universe
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog Odlg = new OpenFileDialog();
@@ -1021,6 +1033,7 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Importing a universe
         private void importToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog Odlg = new OpenFileDialog();
