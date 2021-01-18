@@ -140,6 +140,11 @@ namespace Game_of_Life
             // The number of living neighbors
             int neighbors = 0;
 
+            // For readability
+            int dX = 4;
+            int dY = 4;
+
+
             // Fit xPos and yPos into discrete array
             if (universe.GetLength(0) < xPos)
             {
@@ -168,7 +173,7 @@ namespace Game_of_Life
             {
                 if (xTemp - 1 < 0)
                 {
-                    xTemp = universe.GetLength(0) + 3;
+                    xTemp = universe.GetLength(0) + dX;
                 }
 
                 x = xTemp;
@@ -177,7 +182,7 @@ namespace Game_of_Life
             {
                 if (xTemp + 1 >= universe.GetLength(0))
                 {
-                    xTemp = universe.GetLength(0) + 3;
+                    xTemp = universe.GetLength(0) + dX;
                 }
 
                 x = xTemp;
@@ -186,7 +191,7 @@ namespace Game_of_Life
             {
                 if (yTemp - 1 < 0)
                 {
-                    yTemp = universe.GetLength(1) + 3;
+                    yTemp = universe.GetLength(1) + dY;
                 }
 
                 y = yTemp;
@@ -195,7 +200,7 @@ namespace Game_of_Life
             {
                 if (yTemp + 1 >= universe.GetLength(1))
                 {
-                    yTemp = universe.GetLength(1) + 3;
+                    yTemp = universe.GetLength(1) + dY;
                 }
 
                 y = yTemp;
@@ -253,7 +258,7 @@ namespace Game_of_Life
                     yToroidal_t(out yTemp);
                 }
 
-                if (xTemp - 1 == universe.GetLength(0) + 2 || yTemp - 1 == universe.GetLength(1) + 2)
+                if (xTemp - 1 == universe.GetLength(0) - 1 + dX || yTemp - 1 == universe.GetLength(1) - 1 + dY)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
@@ -273,7 +278,7 @@ namespace Game_of_Life
                     xToroidal_l(out xTemp);
                 }
 
-                if (xTemp - 1 == universe.GetLength(0) + 2)
+                if (xTemp - 1 == universe.GetLength(0) - 1 + dX)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
@@ -295,7 +300,7 @@ namespace Game_of_Life
                     yToroidal_b(out yTemp);
                 }
 
-                if (xTemp - 1 == universe.GetLength(0) + 2 || yTemp + 1 == universe.GetLength(1) + 4)
+                if (xTemp - 1 == universe.GetLength(0) - 1 + dX || yTemp + 1 == universe.GetLength(1) + 1 + dY)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
@@ -315,7 +320,7 @@ namespace Game_of_Life
                     yToroidal_t(out yTemp);
                 }
 
-                if (yTemp - 1 == universe.GetLength(1) + 2)
+                if (yTemp - 1 == universe.GetLength(1) - 1 + dY)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
@@ -335,7 +340,7 @@ namespace Game_of_Life
                     yToroidal_b(out yTemp);
                 }
 
-                if (yTemp + 1 == universe.GetLength(1) + 4)
+                if (yTemp + 1 == universe.GetLength(1) + 1 + dY)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
@@ -357,7 +362,7 @@ namespace Game_of_Life
                     yToroidal_t(out yTemp);
                 }
 
-                if (xTemp + 1 == universe.GetLength(0) + 4 || yTemp - 1 == universe.GetLength(1) + 2)
+                if (xTemp + 1 == universe.GetLength(0) + 1 + dX || yTemp - 1 == universe.GetLength(1) - 1 + dY)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
@@ -377,7 +382,7 @@ namespace Game_of_Life
                     xToroidal_r(out xTemp);
                 }
 
-                if (xTemp + 1 == universe.GetLength(0) + 4)
+                if (xTemp + 1 == universe.GetLength(0) + 1 + dX)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
@@ -399,7 +404,7 @@ namespace Game_of_Life
                     yToroidal_b(out yTemp);
                 }
 
-                if (xTemp + 1 == universe.GetLength(0) + 4 || yTemp + 1 == universe.GetLength(1) + 4)
+                if (xTemp + 1 == universe.GetLength(0) + 1 + dX || yTemp + 1 == universe.GetLength(1) + 1 + dY)
                 {
                     //do nothing except skip where it checks universe[x, y]
                 }
