@@ -658,7 +658,6 @@
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Game of Life";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
