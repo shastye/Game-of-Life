@@ -139,7 +139,7 @@
             this.newToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
             this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.newToolStripMenuItem.Text = "&New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
@@ -181,7 +181,8 @@
             // randomizeOptionsToolStripMenuItem
             // 
             this.randomizeOptionsToolStripMenuItem.Name = "randomizeOptionsToolStripMenuItem";
-            this.randomizeOptionsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.randomizeOptionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+            this.randomizeOptionsToolStripMenuItem.Size = new System.Drawing.Size(219, 22);
             this.randomizeOptionsToolStripMenuItem.Text = "Randomize Options";
             this.randomizeOptionsToolStripMenuItem.Click += new System.EventHandler(this.randomizeOptionsToolStripMenuItem_Click);
             // 

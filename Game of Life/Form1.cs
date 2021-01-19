@@ -583,13 +583,6 @@ namespace Game_of_Life
                     cellRect.Width = cellWidth;
                     cellRect.Height = cellHeight;
 
-                    // A rectangle to represent groups of 10 cells in pixels
-                    RectangleF cellRectx10 = RectangleF.Empty;
-                    cellRectx10.X = cellRect.X * 10f;
-                    cellRectx10.Y = cellRect.Y * 10f;
-                    cellRectx10.Width = cellRect.Width * 10;
-                    cellRectx10.Height = cellRect.Height * 10;
-
                     // Fill the cell with a brush if alive
                     if (universe[x, y] == true)
                     {
@@ -600,7 +593,6 @@ namespace Game_of_Life
                     if (gridDisplay)
                     {
                         e.Graphics.DrawRectangle(gridPen, cellRect.X, cellRect.Y, cellRect.Width, cellRect.Height);
-                        e.Graphics.DrawRectangle(gridPenx10, cellRectx10.X, cellRectx10.Y, cellRectx10.Width, cellRectx10.Height);
                     }
 
                     // Draw neighbors in grid
@@ -628,6 +620,26 @@ namespace Game_of_Life
                             e.Graphics.DrawString(CountNeighbors(x, y).ToString(), font, numbers, cellRect, stringFormat);
                         }
                     }
+                }
+            }
+
+            // Draw x10 grid
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    //Covert x and y to floats
+                    float yf = (float)y;
+                    float xf = (float)x;
+
+                    // A rectangle to represent groups of 10 cells in pixels
+                    RectangleF cellRectx10 = RectangleF.Empty;
+                    cellRectx10.X = xf * cellWidth * 10f;
+                    cellRectx10.Y = yf * cellHeight * 10f;
+                    cellRectx10.Width = cellWidth * 10;
+                    cellRectx10.Height = cellHeight * 10;
+
+                    e.Graphics.DrawRectangle(gridPenx10, cellRectx10.X, cellRectx10.Y, cellRectx10.Width, cellRectx10.Height);
                 }
             }
 
