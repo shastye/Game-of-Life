@@ -55,8 +55,16 @@ namespace Game_of_Life
         {
             InitializeComponent();
 
-            //Change the name of the Forms window
+            // Change the name of the Forms window
             this.Text = Properties.Resources.AppTitle;
+
+            // Set up view menu
+            toggleNeighborCountToolStripMenuItem.Checked = true;
+            toggleNeighborCountToolStripMenuItem.CheckState = CheckState.Checked;
+            toggleGridToolStripMenuItem.Checked = true;
+            toggleGridToolStripMenuItem.CheckState = CheckState.Checked;
+            toggleHUDToolStripMenuItem.Checked = true;
+            toggleHUDToolStripMenuItem.CheckState = CheckState.Checked;
 
             // Setup the timer
             timer.Interval = 100; // milliseconds (no lower than 20 to see changes)
@@ -895,6 +903,17 @@ namespace Game_of_Life
         {
             gridDisplay = !gridDisplay;
 
+            if (gridDisplay)
+            {
+                toggleGridToolStripMenuItem.CheckState = CheckState.Checked;
+                toggleGridToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                toggleGridToolStripMenuItem.CheckState = CheckState.Unchecked;
+                toggleGridToolStripMenuItem.Checked = false;
+            }
+
             graphicsPanel1.Invalidate();
         }
 
@@ -902,6 +921,17 @@ namespace Game_of_Life
         private void toggleNeighborCountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             neighborDisplay = !neighborDisplay;
+
+            if (neighborDisplay)
+            {
+                toggleNeighborCountToolStripMenuItem.CheckState = CheckState.Checked;
+                toggleNeighborCountToolStripMenuItem.Checked = true;
+            }
+            else
+            {
+                toggleNeighborCountToolStripMenuItem.CheckState = CheckState.Unchecked;
+                toggleNeighborCountToolStripMenuItem.Checked = false;
+            }
 
             graphicsPanel1.Invalidate();
         }
@@ -914,10 +944,14 @@ namespace Game_of_Life
             if (hudDisplay)
             {
                 hudStatusStrip.Visible = true;
+                toggleHUDToolStripMenuItem.CheckState = CheckState.Checked;
+                toggleHUDToolStripMenuItem.Checked = true;
             }
             else
             {
                 hudStatusStrip.Visible = false;
+                toggleHUDToolStripMenuItem.CheckState = CheckState.Unchecked;
+                toggleHUDToolStripMenuItem.Checked = false;
             }
 
             graphicsPanel1.Invalidate();
