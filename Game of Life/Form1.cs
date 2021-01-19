@@ -461,12 +461,12 @@ namespace Game_of_Life
             xTemp = xPos;
             yTemp = yPos;
             LowerRight();
-            
+
 
 
             return neighbors;
         }
-                
+
         // Applying the rules to the scratchpad
         private bool[,] ApplyRules()
         {
@@ -501,7 +501,7 @@ namespace Game_of_Life
                     {
                         scratchPad[x, y] = false;
                     }
-                    
+
                     // Any living cell with 2 or 3 living neighbors lives on in the next generation
                     else if (neighbors[x, y] == 2 && universe[x, y] == true)
                     {
@@ -550,6 +550,35 @@ namespace Game_of_Life
             livingCellsToolStripStatusLabel.Text = "    Living Cells = " + livingCells.ToString();
             seedToolStripStatusLabel.Text = "    Seed = " + seedInt.ToString();
             intervalToolStripStatusLabel.Text = "    Interval = " + timer.Interval.ToString();
+
+            // Make the pause and stop button unclickable if timer is not enabled
+            // and the start button unclickable if timer is enabled
+            if (timer.Enabled == false)
+            {
+                pauseToolStripMenuItem.Enabled = false;
+                pauseToolStripButton.Enabled = false;
+                pauseContextMenuItem.Enabled = false;
+
+                //stopToolStripMenuItem.Enabled = false;
+                //stopToolStripButton.Enabled = false;
+
+                startContextMenuItem.Enabled = true;
+                startToolStripButton.Enabled = true;
+                startToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                pauseToolStripMenuItem.Enabled = true;
+                pauseToolStripButton.Enabled = true;
+                pauseContextMenuItem.Enabled = true;
+
+                stopToolStripMenuItem.Enabled = true;
+                stopToolStripButton.Enabled = true;
+
+                startContextMenuItem.Enabled = false;
+                startToolStripButton.Enabled = false;
+                startToolStripMenuItem.Enabled = false;
+            }
 
             // Update the HUD
             if (hudDisplay)
@@ -697,7 +726,7 @@ namespace Game_of_Life
             // Set counts back to 0
             generations = 0;
             livingCells = 0;
-            
+
             // Update status strip 
             generationsToolStripStatusLabel.Text = "Generations = " + generations.ToString();
             livingCellsToolStripStatusLabel.Text = "Living Cells = " + livingCells.ToString();
@@ -749,21 +778,53 @@ namespace Game_of_Life
         // Start the game using run menu item
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            for (int x = 0; x < universe.GetLength(0); x++)
+            if (original == null)
             {
-                for (int y = 0; y < universe.GetLength(1); y++)
+                for (int x = 0; x < universe.GetLength(0); x++)
                 {
-                    original[x, y] = universe[x, y];
+                    for (int y = 0; y < universe.GetLength(1); y++)
+                    {
+                        original[x, y] = universe[x, y];
+                    }
                 }
             }
 
             timer.Enabled = true;
+
+            graphicsPanel1.Invalidate();
         }
 
         // Pause the game using the run menu item
         private void pauseToolStripMenuItem_Click(object sender, EventArgs e)
         {
             timer.Enabled = false;
+
+            ToolStripButton buttonSender = null;
+            ToolStripMenuItem itemSender = null;
+
+            try
+            {
+                buttonSender = (ToolStripButton)sender;
+            }
+            catch (InvalidCastException) { }
+
+            try
+            {
+                itemSender = (ToolStripMenuItem)sender;
+            }
+            catch (InvalidCastException) { }
+
+
+
+            if (buttonSender == pauseToolStripButton || itemSender == pauseToolStripMenuItem
+                || itemSender == pauseContextMenuItem)
+            {
+                //stopContextMenuItem.Enabled = true;
+                stopToolStripButton.Enabled = true;
+                stopToolStripMenuItem.Enabled = true;
+            }
+
+            graphicsPanel1.Invalidate();
         }
 
         // Advance to the next generation
@@ -842,9 +903,35 @@ namespace Game_of_Life
         {
             bool[,] temp = universe;
             universe = original;
-            original = temp;
+            original = null;
 
             timer.Enabled = false;
+
+            ////
+
+            ToolStripButton buttonSender = null;
+            ToolStripMenuItem itemSender = null;
+
+            try
+            {
+                buttonSender = (ToolStripButton)sender;
+            }
+            catch (InvalidCastException) { }
+
+            try
+            {
+                itemSender = (ToolStripMenuItem)sender;
+            }
+            catch (InvalidCastException) { }
+
+
+
+            if (buttonSender == stopToolStripButton || itemSender == stopToolStripMenuItem)
+            {
+                //stopContextMenuItem.Enabled = false;
+                stopToolStripButton.Enabled = false;
+                stopToolStripMenuItem.Enabled = false;
+            }
 
             graphicsPanel1.Invalidate();
         }
@@ -1135,7 +1222,17 @@ namespace Game_of_Life
                     {
                         rowNum++;
 
-                        for (int xPos = 0; xPos < universe.GetLength(0); xPos++)
+                        int minLength;
+                        if (row.Length < universe.GetLength(0))
+                        {
+                            minLength = row.Length;
+                        }
+                        else
+                        {
+                            minLength = universe.GetLength(0);
+                        }
+
+                        for (int xPos = 0; xPos < minLength; xPos++)
                         {
                             if (row[xPos] == 'O')
                             {

@@ -68,7 +68,7 @@
             this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.startToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.stopStripButton = new System.Windows.Forms.ToolStripButton();
+            this.stopToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.pauseToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.nextToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -157,6 +157,7 @@
             // 
             // importToolStripMenuItem
             // 
+            this.importToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.importToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("importToolStripMenuItem.Image")));
             this.importToolStripMenuItem.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.importToolStripMenuItem.Name = "importToolStripMenuItem";
@@ -216,7 +217,7 @@
             this.startToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.StartIcon;
             this.startToolStripMenuItem.Name = "startToolStripMenuItem";
             this.startToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1;
-            this.startToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.startToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.startToolStripMenuItem.Text = "Start";
             this.startToolStripMenuItem.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
@@ -225,7 +226,7 @@
             this.nextToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.NextIcon;
             this.nextToolStripMenuItem.Name = "nextToolStripMenuItem";
             this.nextToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F2;
-            this.nextToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.nextToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.nextToolStripMenuItem.Text = "Next";
             this.nextToolStripMenuItem.Click += new System.EventHandler(this.nextToolStripMenuItem_Click);
             // 
@@ -234,7 +235,7 @@
             this.pauseToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.PauseIcon;
             this.pauseToolStripMenuItem.Name = "pauseToolStripMenuItem";
             this.pauseToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F3;
-            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.pauseToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pauseToolStripMenuItem.Text = "Pause";
             this.pauseToolStripMenuItem.Click += new System.EventHandler(this.pauseToolStripMenuItem_Click);
             // 
@@ -243,7 +244,7 @@
             this.stopToolStripMenuItem.Image = global::Game_of_Life.Properties.Resources.StopIcon;
             this.stopToolStripMenuItem.Name = "stopToolStripMenuItem";
             this.stopToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
-            this.stopToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.stopToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stopToolStripMenuItem.Text = "Stop";
             this.stopToolStripMenuItem.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
@@ -398,7 +399,7 @@
             this.saveToolStripButton,
             this.toolStripSeparator6,
             this.startToolStripButton,
-            this.stopStripButton,
+            this.stopToolStripButton,
             this.pauseToolStripButton,
             this.toolStripSeparator2,
             this.nextToolStripButton});
@@ -454,15 +455,15 @@
             this.startToolStripButton.Text = "Start (F1)";
             this.startToolStripButton.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
             // 
-            // stopStripButton
+            // stopToolStripButton
             // 
-            this.stopStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.stopStripButton.Image = global::Game_of_Life.Properties.Resources.StopIcon;
-            this.stopStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.stopStripButton.Name = "stopStripButton";
-            this.stopStripButton.Size = new System.Drawing.Size(23, 22);
-            this.stopStripButton.Text = "Stop (F4)";
-            this.stopStripButton.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
+            this.stopToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.stopToolStripButton.Image = global::Game_of_Life.Properties.Resources.StopIcon;
+            this.stopToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.stopToolStripButton.Name = "stopToolStripButton";
+            this.stopToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.stopToolStripButton.Text = "Stop (F4)";
+            this.stopToolStripButton.Click += new System.EventHandler(this.stopToolStripMenuItem_Click);
             // 
             // pauseToolStripButton
             // 
@@ -767,7 +768,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripMenuItem randomizeOptionsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripButton stopStripButton;
+        private System.Windows.Forms.ToolStripButton stopToolStripButton;
         private System.Windows.Forms.ToolStripStatusLabel livingCellsToolStripStatusLabel;
         private System.Windows.Forms.ToolStripStatusLabel generationsToolStripStatusLabel;
         private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
