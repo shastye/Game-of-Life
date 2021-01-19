@@ -45,6 +45,15 @@ namespace Game_of_Life
             }
         }
 
+        // Access to certain containers for property form
+        public Control SeedControl
+        {
+            get
+            {
+                return seedUpDown;
+            }
+        }
+
         public string RandStyle
         {
             get

@@ -1155,6 +1155,7 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
+        // Changing the color of the Gridx10
         private void gridX10ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog dlg = new ColorDialog();

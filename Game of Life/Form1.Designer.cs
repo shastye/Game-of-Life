@@ -53,6 +53,7 @@
             this.colorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.backgroundToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.gridToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridX10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectedBoxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.selectedBoxNumbersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.unselectedBoxNumbersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,9 +97,8 @@
             this.hudCellCountStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.hudBoundaryStyleStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.hudUniverseSizeStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.graphicsPanel1 = new Game_of_Life.GraphicsPanel();
             this.panelToolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.gridX10ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.graphicsPanel1 = new Game_of_Life.GraphicsPanel();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -325,6 +325,13 @@
             this.gridToolStripMenuItem1.Size = new System.Drawing.Size(207, 22);
             this.gridToolStripMenuItem1.Text = "Grid";
             this.gridToolStripMenuItem1.Click += new System.EventHandler(this.gridToolStripMenuItem1_Click);
+            // 
+            // gridX10ToolStripMenuItem
+            // 
+            this.gridX10ToolStripMenuItem.Name = "gridX10ToolStripMenuItem";
+            this.gridX10ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.gridX10ToolStripMenuItem.Text = "Grid x10";
+            this.gridX10ToolStripMenuItem.Click += new System.EventHandler(this.gridX10ToolStripMenuItem_Click);
             // 
             // selectedBoxToolStripMenuItem1
             // 
@@ -643,6 +650,7 @@
             this.hudStatusStrip.SizingGrip = false;
             this.hudStatusStrip.TabIndex = 2;
             this.hudStatusStrip.Text = "hudStatusStrip";
+            this.panelToolTip.SetToolTip(this.hudStatusStrip, "HUD: can remove from screen under the view menu");
             // 
             // hudGenerationStatus
             // 
@@ -668,6 +676,10 @@
             this.hudUniverseSizeStatus.Size = new System.Drawing.Size(211, 17);
             this.hudUniverseSizeStatus.Text = "Universe Size = {Height = 5; Width = 5}";
             // 
+            // panelToolTip
+            // 
+            this.panelToolTip.ToolTipTitle = "Directions";
+            // 
             // graphicsPanel1
             // 
             this.graphicsPanel1.BackColor = System.Drawing.SystemColors.Window;
@@ -680,17 +692,6 @@
             this.panelToolTip.SetToolTip(this.graphicsPanel1, "Click on a cell to toggle whether it is living or dead.");
             this.graphicsPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.graphicsPanel1_Paint);
             this.graphicsPanel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.graphicsPanel1_MouseClick);
-            // 
-            // panelToolTip
-            // 
-            this.panelToolTip.ToolTipTitle = "Directions";
-            // 
-            // gridX10ToolStripMenuItem
-            // 
-            this.gridX10ToolStripMenuItem.Name = "gridX10ToolStripMenuItem";
-            this.gridX10ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.gridX10ToolStripMenuItem.Text = "Grid x10";
-            this.gridX10ToolStripMenuItem.Click += new System.EventHandler(this.gridX10ToolStripMenuItem_Click);
             // 
             // Form1
             // 
