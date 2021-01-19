@@ -34,8 +34,8 @@
             this.seedUpDown = new System.Windows.Forms.NumericUpDown();
             this.seedLabel = new System.Windows.Forms.Label();
             this.randGroupBox = new System.Windows.Forms.GroupBox();
-            this.knownSeedRadioButton = new System.Windows.Forms.RadioButton();
             this.timeSeedRadioButton = new System.Windows.Forms.RadioButton();
+            this.knownSeedRadioButton = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).BeginInit();
             this.randGroupBox.SuspendLayout();
             this.SuspendLayout();
@@ -107,16 +107,6 @@
             this.randGroupBox.TabStop = false;
             this.randGroupBox.Text = "Randomization Style";
             // 
-            // knownSeedRadioButton
-            // 
-            this.knownSeedRadioButton.AutoSize = true;
-            this.knownSeedRadioButton.Location = new System.Drawing.Point(55, 43);
-            this.knownSeedRadioButton.Name = "knownSeedRadioButton";
-            this.knownSeedRadioButton.Size = new System.Drawing.Size(86, 17);
-            this.knownSeedRadioButton.TabIndex = 0;
-            this.knownSeedRadioButton.Text = "Known Seed";
-            this.knownSeedRadioButton.UseVisualStyleBackColor = true;
-            // 
             // timeSeedRadioButton
             // 
             this.timeSeedRadioButton.AutoSize = true;
@@ -126,6 +116,16 @@
             this.timeSeedRadioButton.TabIndex = 1;
             this.timeSeedRadioButton.Text = "Time Based Seed";
             this.timeSeedRadioButton.UseVisualStyleBackColor = true;
+            // 
+            // knownSeedRadioButton
+            // 
+            this.knownSeedRadioButton.AutoSize = true;
+            this.knownSeedRadioButton.Location = new System.Drawing.Point(55, 43);
+            this.knownSeedRadioButton.Name = "knownSeedRadioButton";
+            this.knownSeedRadioButton.Size = new System.Drawing.Size(86, 17);
+            this.knownSeedRadioButton.TabIndex = 0;
+            this.knownSeedRadioButton.Text = "Known Seed";
+            this.knownSeedRadioButton.UseVisualStyleBackColor = true;
             // 
             // RandomizeOptionsForm
             // 
@@ -146,6 +146,7 @@
             this.MinimizeBox = false;
             this.Name = "RandomizeOptionsForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Randomize Options";
             ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).EndInit();
             this.randGroupBox.ResumeLayout(false);
