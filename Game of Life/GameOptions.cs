@@ -17,32 +17,6 @@ namespace Game_of_Life
             InitializeComponent();
         }
 
-        // Allows access to seed value in Form1
-        public int Seed
-        {
-            get
-            {
-                return (int)seedUpDown.Value;
-            }
-            set
-            {
-                seedUpDown.Value = (decimal)value;
-            }
-        }
-
-        // Allows access to seed value maximum
-        public int SeedMax
-        {
-            get
-            {
-                return (int)seedUpDown.Maximum;
-            }
-            private set
-            {
-                seedUpDown.Maximum = value;
-            }
-        }
-
         // Allows access to timer value in Form1
         public int Milliseconds
         {
@@ -93,13 +67,6 @@ namespace Game_of_Life
             {
                 numColsUpDown.Value = (decimal)value;
             }
-        }
-
-        // Clicking randomize next to seed
-        private void randSeedButton_Click(object sender, EventArgs e)
-        {
-            Random randSeed = new Random();
-            this.Seed = randSeed.Next((int)seedUpDown.Maximum);
         }
     }
 }

@@ -30,9 +30,6 @@
         {
             this.cancelButton = new System.Windows.Forms.Button();
             this.okButton = new System.Windows.Forms.Button();
-            this.seedLabel = new System.Windows.Forms.Label();
-            this.seedUpDown = new System.Windows.Forms.NumericUpDown();
-            this.randSeedButton = new System.Windows.Forms.Button();
             this.millisecondsLabel = new System.Windows.Forms.Label();
             this.millisecondsUpDown = new System.Windows.Forms.NumericUpDown();
             this.boundaryStyleLabel = new System.Windows.Forms.Label();
@@ -43,7 +40,6 @@
             this.numRowsLabel = new System.Windows.Forms.Label();
             this.universeSizeLabel = new System.Windows.Forms.Label();
             this.universeBehaviorLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.millisecondsUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRowsUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numColsUpDown)).BeginInit();
@@ -69,46 +65,10 @@
             this.okButton.Text = "Okay";
             this.okButton.UseVisualStyleBackColor = true;
             // 
-            // seedLabel
-            // 
-            this.seedLabel.AutoSize = true;
-            this.seedLabel.Location = new System.Drawing.Point(197, 73);
-            this.seedLabel.Name = "seedLabel";
-            this.seedLabel.Size = new System.Drawing.Size(32, 13);
-            this.seedLabel.TabIndex = 2;
-            this.seedLabel.Text = "Seed";
-            // 
-            // seedUpDown
-            // 
-            this.seedUpDown.Location = new System.Drawing.Point(237, 69);
-            this.seedUpDown.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.seedUpDown.Name = "seedUpDown";
-            this.seedUpDown.Size = new System.Drawing.Size(120, 20);
-            this.seedUpDown.TabIndex = 3;
-            this.seedUpDown.Value = new decimal(new int[] {
-            2020,
-            0,
-            0,
-            0});
-            // 
-            // randSeedButton
-            // 
-            this.randSeedButton.Location = new System.Drawing.Point(363, 68);
-            this.randSeedButton.Name = "randSeedButton";
-            this.randSeedButton.Size = new System.Drawing.Size(75, 23);
-            this.randSeedButton.TabIndex = 4;
-            this.randSeedButton.Text = "Randomize";
-            this.randSeedButton.UseVisualStyleBackColor = true;
-            this.randSeedButton.Click += new System.EventHandler(this.randSeedButton_Click);
-            // 
             // millisecondsLabel
             // 
             this.millisecondsLabel.AutoSize = true;
-            this.millisecondsLabel.Location = new System.Drawing.Point(60, 107);
+            this.millisecondsLabel.Location = new System.Drawing.Point(59, 76);
             this.millisecondsLabel.Name = "millisecondsLabel";
             this.millisecondsLabel.Size = new System.Drawing.Size(169, 13);
             this.millisecondsLabel.TabIndex = 5;
@@ -116,7 +76,7 @@
             // 
             // millisecondsUpDown
             // 
-            this.millisecondsUpDown.Location = new System.Drawing.Point(237, 103);
+            this.millisecondsUpDown.Location = new System.Drawing.Point(236, 72);
             this.millisecondsUpDown.Maximum = new decimal(new int[] {
             600,
             0,
@@ -139,7 +99,7 @@
             // boundaryStyleLabel
             // 
             this.boundaryStyleLabel.AutoSize = true;
-            this.boundaryStyleLabel.Location = new System.Drawing.Point(150, 141);
+            this.boundaryStyleLabel.Location = new System.Drawing.Point(149, 110);
             this.boundaryStyleLabel.Name = "boundaryStyleLabel";
             this.boundaryStyleLabel.Size = new System.Drawing.Size(78, 13);
             this.boundaryStyleLabel.TabIndex = 8;
@@ -154,7 +114,7 @@
             this.boundaryStyleComboBox.Items.AddRange(new object[] {
             "Finite",
             "Toroidal"});
-            this.boundaryStyleComboBox.Location = new System.Drawing.Point(236, 138);
+            this.boundaryStyleComboBox.Location = new System.Drawing.Point(235, 107);
             this.boundaryStyleComboBox.Name = "boundaryStyleComboBox";
             this.boundaryStyleComboBox.Size = new System.Drawing.Size(121, 21);
             this.boundaryStyleComboBox.TabIndex = 9;
@@ -258,15 +218,11 @@
             this.Controls.Add(this.boundaryStyleLabel);
             this.Controls.Add(this.millisecondsUpDown);
             this.Controls.Add(this.millisecondsLabel);
-            this.Controls.Add(this.randSeedButton);
-            this.Controls.Add(this.seedUpDown);
-            this.Controls.Add(this.seedLabel);
             this.Controls.Add(this.okButton);
             this.Controls.Add(this.cancelButton);
             this.Name = "GameOptionsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Game Options";
-            ((System.ComponentModel.ISupportInitialize)(this.seedUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.millisecondsUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numRowsUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numColsUpDown)).EndInit();
@@ -279,9 +235,6 @@
 
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Button okButton;
-        private System.Windows.Forms.Label seedLabel;
-        private System.Windows.Forms.NumericUpDown seedUpDown;
-        private System.Windows.Forms.Button randSeedButton;
         private System.Windows.Forms.Label millisecondsLabel;
         private System.Windows.Forms.NumericUpDown millisecondsUpDown;
         private System.Windows.Forms.Label boundaryStyleLabel;

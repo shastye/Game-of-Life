@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace Game_of_Life
 {
@@ -26,6 +27,7 @@ namespace Game_of_Life
         // Variables for randomizing the seed and the grid
         static int seedInt = 2019;
         Random rand;
+        string randStyle = "known";
 
         // Variables for toggling the view functions
         bool gridDisplay = true;
@@ -72,9 +74,8 @@ namespace Game_of_Life
             timer.Enabled = false; // start timer as not running
 
             // Generate random seed from the beginning
-            Random temp = new Random();
-            GameOptionsForm dlg = new GameOptionsForm();
-            seedInt = temp.Next(dlg.SeedMax);
+            DateTime min = DateTime.UtcNow;
+            seedInt = (int)min.Ticks;
 
             // Read settings
             graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
@@ -839,7 +840,6 @@ namespace Game_of_Life
         {
             GameOptionsForm GOdlg = new GameOptionsForm();
 
-            GOdlg.Seed = seedInt; 
             GOdlg.Milliseconds = timer.Interval;
             GOdlg.Rows = universe.GetLength(0);
             GOdlg.Columns = universe.GetLength(1);
@@ -854,7 +854,6 @@ namespace Game_of_Life
 
             if (DialogResult.OK == GOdlg.ShowDialog())
             {
-                seedInt = GOdlg.Seed;
                 timer.Interval = GOdlg.Milliseconds;
 
                 ResizeArray(ref universe, GOdlg.Rows, GOdlg.Columns);
@@ -875,22 +874,46 @@ namespace Game_of_Life
             graphicsPanel1.Invalidate();
         }
 
-        // Clicking Randomize in file menu
-        private void randomizeToolStripMenuItem_Click(object sender, EventArgs e)
+        // Clicking Randomize Options in file menu
+        private void randomizeOptionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            rand = new Random(seedInt);
+            RandomizeOptionsForm RNDdlg = new RandomizeOptionsForm();
 
-            for (int x = 0; x < universe.GetLength(0); x++)
+            RNDdlg.Seed = seedInt;
+            RNDdlg.RandStyle = randStyle;
+
+            if (DialogResult.OK == RNDdlg.ShowDialog())
             {
-                for (int y = 0; y < universe.GetLength(1); y++)
+                randStyle = RNDdlg.RandStyle;
+
+                if (randStyle == "known")
                 {
-                    universe[x, y] = false;
+                    seedInt = RNDdlg.Seed;
+                }
+                else if (randStyle == "time")
+                {
+                    DateTime min = DateTime.UtcNow;
+                    seedInt = (int)min.Ticks;
+                }
 
-                    int randLiving = rand.Next(3);
 
-                    if (randLiving == 0)
+                ////
+
+
+                rand = new Random(seedInt);
+
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    for (int y = 0; y < universe.GetLength(1); y++)
                     {
-                        universe[x, y] = true;
+                        universe[x, y] = false;
+
+                        int randLiving = rand.Next(3);
+
+                        if (randLiving == 0)
+                        {
+                            universe[x, y] = true;
+                        }
                     }
                 }
             }
