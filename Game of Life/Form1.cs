@@ -31,6 +31,7 @@ namespace Game_of_Life
 
         // Variables for toggling the view functions
         bool gridDisplay = true;
+        bool gridx10Display = true;
         bool neighborDisplay = true;
         bool hudDisplay = true;
         bool finite = false;
@@ -80,6 +81,7 @@ namespace Game_of_Life
             // Read settings
             graphicsPanel1.BackColor = Properties.Settings.Default.GraphicsPanel1_Backcolor;
             gridColor = Properties.Settings.Default.GraphicsPanel1_Gridcolor;
+            gridColorx10 = Properties.Settings.Default.GraphicsPanel1_Gridx10Color;
             cellColor = Properties.Settings.Default.GraphicsPanel1_SelectedBoxColor;
             livingNumberColor = Properties.Settings.Default.GraphicsPanel1_SelectedCellNumberColor;
             deadNumberColor = Properties.Settings.Default.GraphicsPanel1_UnselectedCellNumberColor;
@@ -624,22 +626,25 @@ namespace Game_of_Life
             }
 
             // Draw x10 grid
-            for (int y = 0; y < universe.GetLength(1); y++)
+            if (gridx10Display)
             {
-                for (int x = 0; x < universe.GetLength(0); x++)
+                for (int y = 0; y < universe.GetLength(1); y++)
                 {
-                    //Covert x and y to floats
-                    float yf = (float)y;
-                    float xf = (float)x;
+                    for (int x = 0; x < universe.GetLength(0); x++)
+                    {
+                        //Covert x and y to floats
+                        float yf = (float)y;
+                        float xf = (float)x;
 
-                    // A rectangle to represent groups of 10 cells in pixels
-                    RectangleF cellRectx10 = RectangleF.Empty;
-                    cellRectx10.X = xf * cellWidth * 10f;
-                    cellRectx10.Y = yf * cellHeight * 10f;
-                    cellRectx10.Width = cellWidth * 10;
-                    cellRectx10.Height = cellHeight * 10;
+                        // A rectangle to represent groups of 10 cells in pixels
+                        RectangleF cellRectx10 = RectangleF.Empty;
+                        cellRectx10.X = xf * cellWidth * 10f;
+                        cellRectx10.Y = yf * cellHeight * 10f;
+                        cellRectx10.Width = cellWidth * 10;
+                        cellRectx10.Height = cellHeight * 10;
 
-                    e.Graphics.DrawRectangle(gridPenx10, cellRectx10.X, cellRectx10.Y, cellRectx10.Width, cellRectx10.Height);
+                        e.Graphics.DrawRectangle(gridPenx10, cellRectx10.X, cellRectx10.Y, cellRectx10.Width, cellRectx10.Height);
+                    }
                 }
             }
 
@@ -777,6 +782,7 @@ namespace Game_of_Life
             Properties.Settings.Default.Form1_TimerInterval = timer.Interval;
             Properties.Settings.Default.Form1_UniverseRows = universe.GetLength(1);
             Properties.Settings.Default.Form1_UniverseColumns = universe.GetLength(0);
+            Properties.Settings.Default.GraphicsPanel1_Gridx10Color = gridColorx10;
 
             Properties.Settings.Default.Save();
         }
@@ -1142,6 +1148,19 @@ namespace Game_of_Life
                 }
 
                 reader.Close();
+            }
+
+            graphicsPanel1.Invalidate();
+        }
+
+        private void gridX10ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            dlg.Color = gridColorx10;
+
+            if (DialogResult.OK == dlg.ShowDialog())
+            {
+                gridColorx10 = dlg.Color;
             }
 
             graphicsPanel1.Invalidate();

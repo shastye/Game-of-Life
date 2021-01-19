@@ -118,5 +118,17 @@ namespace Game_of_Life.Properties {
                 this["Form1_UniverseColumns"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Black")]
+        public global::System.Drawing.Color GraphicsPanel1_Gridx10Color {
+            get {
+                return ((global::System.Drawing.Color)(this["GraphicsPanel1_Gridx10Color"]));
+            }
+            set {
+                this["GraphicsPanel1_Gridx10Color"] = value;
+            }
+        }
     }
 }
