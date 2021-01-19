@@ -130,5 +130,17 @@ namespace Game_of_Life.Properties {
                 this["GraphicsPanel1_Gridx10Color"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("time")]
+        public string Form1_RandomizeStyle {
+            get {
+                return ((string)(this["Form1_RandomizeStyle"]));
+            }
+            set {
+                this["Form1_RandomizeStyle"] = value;
+            }
+        }
     }
 }

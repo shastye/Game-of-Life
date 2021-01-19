@@ -90,6 +90,7 @@ namespace Game_of_Life
             ResizeArray(ref scratchPad, Properties.Settings.Default.Form1_UniverseRows, Properties.Settings.Default.Form1_UniverseColumns);
             ResizeArray(ref neighbors, Properties.Settings.Default.Form1_UniverseRows, Properties.Settings.Default.Form1_UniverseColumns);
             ResizeArray(ref original, Properties.Settings.Default.Form1_UniverseRows, Properties.Settings.Default.Form1_UniverseColumns);
+            randStyle = Properties.Settings.Default.Form1_RandomizeStyle;
         }
 
         // Resizing a 2D array 
@@ -783,6 +784,7 @@ namespace Game_of_Life
             Properties.Settings.Default.Form1_UniverseRows = universe.GetLength(1);
             Properties.Settings.Default.Form1_UniverseColumns = universe.GetLength(0);
             Properties.Settings.Default.GraphicsPanel1_Gridx10Color = gridColorx10;
+            Properties.Settings.Default.Form1_RandomizeStyle = randStyle;
 
             Properties.Settings.Default.Save();
         }

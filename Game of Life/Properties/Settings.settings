@@ -29,5 +29,8 @@
     <Setting Name="GraphicsPanel1_Gridx10Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>
     </Setting>
+    <Setting Name="Form1_RandomizeStyle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">time</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

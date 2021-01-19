@@ -24,7 +24,7 @@ namespace Game_of_Life
         {
             get
             {
-                return (int)seedUpDown.Value;
+                return (int)Math.Abs(seedUpDown.Value);
             }
             set
             {
