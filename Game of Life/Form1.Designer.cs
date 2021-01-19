@@ -116,6 +116,7 @@
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(601, 24);
             this.menuStrip1.TabIndex = 0;
+            this.menuStrip1.TabStop = true;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -396,6 +397,7 @@
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(601, 25);
             this.toolStrip1.TabIndex = 1;
+            this.toolStrip1.TabStop = true;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // newToolStripButton
@@ -488,7 +490,7 @@
             this.statusStrip1.Location = new System.Drawing.Point(0, 672);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(601, 22);
-            this.statusStrip1.TabIndex = 2;
+            this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // generationsToolStripStatusLabel
@@ -637,7 +639,7 @@
             this.hudStatusStrip.Name = "hudStatusStrip";
             this.hudStatusStrip.Size = new System.Drawing.Size(601, 22);
             this.hudStatusStrip.SizingGrip = false;
-            this.hudStatusStrip.TabIndex = 4;
+            this.hudStatusStrip.TabIndex = 2;
             this.hudStatusStrip.Text = "hudStatusStrip";
             // 
             // hudGenerationStatus
