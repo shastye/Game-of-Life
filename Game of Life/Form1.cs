@@ -559,9 +559,6 @@ namespace Game_of_Life
                 pauseToolStripButton.Enabled = false;
                 pauseContextMenuItem.Enabled = false;
 
-                //stopToolStripMenuItem.Enabled = false;
-                //stopToolStripButton.Enabled = false;
-
                 startContextMenuItem.Enabled = true;
                 startToolStripButton.Enabled = true;
                 startToolStripMenuItem.Enabled = true;
@@ -778,14 +775,11 @@ namespace Game_of_Life
         // Start the game using run menu item
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (original == null)
+            for (int x = 0; x < universe.GetLength(0); x++)
             {
-                for (int x = 0; x < universe.GetLength(0); x++)
+                for (int y = 0; y < universe.GetLength(1); y++)
                 {
-                    for (int y = 0; y < universe.GetLength(1); y++)
-                    {
-                        original[x, y] = universe[x, y];
-                    }
+                    original[x, y] = universe[x, y];
                 }
             }
 
@@ -903,7 +897,14 @@ namespace Game_of_Life
         {
             bool[,] temp = universe;
             universe = original;
-            original = null;
+            for (int y = 0; y < universe.GetLength(1); y++)
+            {
+                for (int x = 0; x < universe.GetLength(0); x++)
+                {
+                    original[x, y] = false;
+                }
+            }
+
 
             timer.Enabled = false;
 
