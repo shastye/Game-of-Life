@@ -36,6 +36,12 @@ namespace Game_of_Life
         bool hudDisplay = true;
         bool finite = false;
 
+        // For creating a ratio aspect for the window
+        bool resizing = false;
+        float height;
+        float width;
+        float ratio = 617f / 733f;
+
         // Drawing colors
         Color gridColor = Color.Black;
         Color gridColorx10 = Color.Black;
@@ -1265,6 +1271,30 @@ namespace Game_of_Life
             }
 
             graphicsPanel1.Invalidate();
+        }
+    
+        // Resizing Form1 to maintain graphicsPanel1 as a square
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            resizing = true;
+            height = this.Size.Height;
+            width = this.Size.Width;
+        }
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+            if (!resizing) 
+            { 
+                return; 
+            }
+            else if (resizing) 
+            { 
+                resizing = false;
+
+                float dh = Math.Abs((float)this.Height - height);
+                float dw = Math.Abs((float)this.Width - width);
+                
+                this.Size = new Size((int)(ratio * (float)this.Height), (int)this.Height);                
+            }
         }
     }
 }
