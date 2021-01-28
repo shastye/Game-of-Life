@@ -21,10 +21,10 @@
       <Value Profile="(Default)">100</Value>
     </Setting>
     <Setting Name="Form1_UniverseRows" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="Form1_UniverseColumns" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">5</Value>
+      <Value Profile="(Default)">30</Value>
     </Setting>
     <Setting Name="GraphicsPanel1_Gridx10Color" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Black</Value>

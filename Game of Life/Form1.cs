@@ -15,8 +15,8 @@ namespace Game_of_Life
     public partial class Form1 : Form
     {
         // The array sizes
-        const int _X = 5;
-        const int _Y = 5;
+        const int _X = 30;
+        const int _Y = 30;
 
         // The arrays
         bool[,] universe = new bool[_X, _Y];
@@ -103,12 +103,12 @@ namespace Game_of_Life
         private void ResizeArray<T>(ref T[,] ogArray, int newRows, int newCols)
         {
             var newArray = new T[newRows, newCols];
-            int minRows = Math.Min(newRows, ogArray.GetLength(1));
-            int minCols = Math.Min(newCols, ogArray.GetLength(0));
+            int minRows = Math.Min(newRows, ogArray.GetLength(0));
+            int minCols = Math.Min(newCols, ogArray.GetLength(1));
 
-            for (int x = 0; x < minCols; x++)
+            for (int x = 0; x < minRows; x++)
             {
-                for (int y = 0; y < minRows; y++)
+                for (int y = 0; y < minCols; y++)
                 {
                     newArray[x, y] = ogArray[x, y];
                 }

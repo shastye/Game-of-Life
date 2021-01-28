@@ -97,7 +97,7 @@ namespace Game_of_Life.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
         public int Form1_UniverseRows {
             get {
                 return ((int)(this["Form1_UniverseRows"]));
@@ -109,7 +109,7 @@ namespace Game_of_Life.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5")]
+        [global::System.Configuration.DefaultSettingValueAttribute("30")]
         public int Form1_UniverseColumns {
             get {
                 return ((int)(this["Form1_UniverseColumns"]));
