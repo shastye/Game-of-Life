@@ -1,2 +1,13 @@
 ﻿Things implemented that weren't part of the requirements:
-	
+	In order to implement the scratchpad without having to worry about pointers, I created a
+		neighbors[] that counts the neighbors of each cell before any changes.
+	Implemented a "Stop" button but it doesn't completely work as planned quit yet.
+	My HUD is placed above the graphicsPanel instead of written overtop of it.
+	Made the font size relative the the cell height.
+	All randomizations are inside a modal dialog.
+	Implemented a x10 grid.
+	Based which Run buttons are pressable based on timer.Enabled AND/OR what buttons have been
+		pressed previously.
+	Added shortkeys to all menu items, as well as made them viewable.
+	Attemped to create an aspect ratio for the form window so that the graphicsPanel is always
+		a square.
